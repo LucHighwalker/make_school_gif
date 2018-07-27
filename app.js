@@ -13,10 +13,14 @@ app.listen(4200, function () {
 });
 
 app.get('/', function (req, res) {
+    res.render('home');
+});
+
+app.get('/search', function (req, res) {
     var input = req.query.term ? req.query.term : ' ';
 
     giphy.search(input, function (err, response) {
-        res.render('home', { gifs: response.data });
+        res.render('search', { gifs: response.data });
 
         if (err !== null) {
             console.error(err);
