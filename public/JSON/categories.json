@@ -1,0 +1,12 @@
+[
+    "funny",
+    {
+        "name": "animals",
+        "array": [
+            "cat",
+            "dog",
+            "bird",
+            "horse"
+        ]
+    }
+]
