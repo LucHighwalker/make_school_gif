@@ -9,7 +9,8 @@ var catJSON = require(__dirname + '/public/JSON/categories.json');
 app.engine('hbs', exphbs({
     extname: 'hbs',
     defaultLayout: 'main',
-    layoutsDir: __dirname + '/views/layouts'
+    layoutsDir: __dirname + '/views/layouts',
+    partialsDir: __dirname + '/views/partials'
 }));
 app.set('view engine', 'hbs');
 app.use(express.static('public'));
