@@ -85,6 +85,13 @@ a:hover {
 }
 
 @media(min-width:992px) {
+    .nav {
+        margin-left: 10px;
+    }
+    .nav-btn {
+        margin: 5px;
+        cursor: pointer;
+    }
     .navbar-nav.side-nav.open {
         left: 0;
     }
