@@ -1,9 +1,15 @@
 @import "animate";
 @import "home";
 @import "result";
-
 @import "partials/navbar";
 @import "partials/search";
+body {
+    background-color: #6888a8;
+}
+
+html {
+    background-color: #6888a8;
+}
 
 a {
     color: white;
