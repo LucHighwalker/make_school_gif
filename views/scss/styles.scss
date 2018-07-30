@@ -1,5 +1,5 @@
 @import "search";
-@import "./partials/navbar";
+@import "partials/navbar";
 
 a {
     color: white;
@@ -8,6 +8,10 @@ a {
 a:hover {
     color: #6888a8;
     text-decoration: none;
+}
+
+.container {
+    padding-top: 75px;
 }
 
 .animate {

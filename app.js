@@ -5,6 +5,7 @@ var exphbs = require('express-handlebars');
 var giphy = require('giphy-api')();
 
 var catJSON = require(__dirname + '/public/JSON/categories.json');
+var categories = JSON.parse(JSON.stringify(catJSON));
 
 app.engine('hbs', exphbs({
     extname: 'hbs',
@@ -20,13 +21,11 @@ app.listen(4200, function () {
 });
 
 app.get('/', function (req, res) {
-    res.render('home');
+    res.render('home', { catList: categories });
 });
 
 app.get('/search', function (req, res) {
     var input = req.query.term ? req.query.term : ' ';
-
-    var categories = JSON.parse(JSON.stringify(catJSON));
 
     giphy.search(input, function (err, response) {
         res.render('search', { gifs: response.data, catList: categories });
