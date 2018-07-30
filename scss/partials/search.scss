@@ -1,0 +1,13 @@
+.search {
+    display: inline-block;
+}
+
+@media(max-width:992px) {
+    .form-control {
+        min-height: 75px;
+        font-size: xx-large;
+    }
+    .btn {
+        font-size: xx-large;
+    }
+}

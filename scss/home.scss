@@ -1,0 +1,27 @@
+.home-box {
+    position: relative;
+    display: block;
+    top: 275px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    padding: 25px;
+    background-color: #585f66;
+    color: white;
+    text-align: center;
+    border: 3px solid #353535;
+    border-radius: 5px;
+    -moz-animation: bounceInDown 1s ease-in;
+    -webkit-animation: bounceInDown 1s ease-in;
+    animation: bounceInDown 1s ease-in;
+    .home-search {
+        position: relative;
+        display: block;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: 50px auto;
+    }
+}

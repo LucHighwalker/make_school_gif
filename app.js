@@ -21,14 +21,21 @@ app.listen(4200, function () {
 });
 
 app.get('/', function (req, res) {
-    res.render('home', { catList: categories });
+    res.render('home', {
+        navSearch: false,
+        catList: categories
+    });
 });
 
 app.get('/search', function (req, res) {
     var input = req.query.term ? req.query.term : ' ';
 
     giphy.search(input, function (err, response) {
-        res.render('result', { gifs: response.data, catList: categories });
+        res.render('result', {
+            gifs: response.data,
+            navSearch: true,
+            catList: categories
+        });
 
         if (err !== null) {
             console.error(err);
