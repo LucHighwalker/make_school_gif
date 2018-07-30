@@ -1,31 +1,79 @@
 @-moz-keyframes title-scroll {
     0% {
-        -moz-transform: translateX(10%);
+        opacity: 0;
+        -moz-transform: translateX(0);
+    }
+    10% {
+        opacity: 1;
+        -moz-transform: translateX(0);
+    }
+    25% {
+        opacity: 1;
+        -moz-transform: translateX(0);
+    }
+    90% {
+        opacity: 1;
+        -moz-transform: translateX(-100%);
     }
     100% {
-        -moz-transform: translateX(-150%);
+        opacity: 0;
+        -moz-transform: translateX(-115%);
     }
 }
 
 @-webkit-keyframes title-scroll {
     0% {
-        -webkit-transform: translateX(10%);
+        opacity: 0;
+        -webkit-transform: translateX(0);
+    }
+    10% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+    25% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translateX(-100%);
     }
     100% {
-        -webkit-transform: translateX(-150%);
+        opacity: 0;
+        -webkit-transform: translateX(-115%);
     }
 }
 
 @keyframes title-scroll {
     0% {
-        -moz-transform: translateX(10%);
-        -webkit-transform: translateX(10%);
-        transform: translateX(10%);
+        opacity: 0;
+        -moz-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    10% {
+        opacity: 1;
+        -moz-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    25% {
+        opacity: 1;
+        -moz-transform: translateX(0);
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    90% {
+        opacity: 1;
+        -moz-transform: translateX(-100%);
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
     }
     100% {
-        -moz-transform: translateX(-150%);
-        -webkit-transform: translateX(-150%);
-        transform: translateX(-150%);
+        opacity: 0;
+        -moz-transform: translateX(-115%);
+        -webkit-transform: translateX(-115%);
+        transform: translateX(-115%);
     }
 }
 
@@ -61,6 +109,7 @@
         text-overflow: clip;
         opacity: 0;
         .gif-title {
+            display: none;
             height: 50px;
             width: calc(100% - 10px);
             left: 5px;
@@ -91,10 +140,11 @@
     .gif-info {
         opacity: 1;
         .gif-title {
+            display: block;
             h3 {
-                -moz-transform: translateX(10%);
-                -webkit-transform: translateX(10%);
-                transform: translateX(10%);
+                -moz-transform: translateX(0);
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
                 
                 -moz-animation: title-scroll 7s linear infinite;
                 -webkit-animation: title-scroll 7s linear infinite;
