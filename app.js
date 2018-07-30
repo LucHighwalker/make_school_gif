@@ -17,7 +17,7 @@ app.set('view engine', 'hbs');
 app.use(express.static('public'));
 
 app.listen(4200, function () {
-    console.log('Gif Search listening on port localhost:4200!');
+    console.log('notJif listening on port localhost:4200!');
 });
 
 app.get('/', function (req, res) {
@@ -28,7 +28,7 @@ app.get('/search', function (req, res) {
     var input = req.query.term ? req.query.term : ' ';
 
     giphy.search(input, function (err, response) {
-        res.render('search', { gifs: response.data, catList: categories });
+        res.render('result', { gifs: response.data, catList: categories });
 
         if (err !== null) {
             console.error(err);

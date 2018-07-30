@@ -1,0 +1,12 @@
+<div class="results">
+  {{#each gifs}}
+  <div class="gif-result animate">
+    <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
+    <div class="gif-info animate">
+      <div class="gif-title">
+        <h3>{{this.title}}</h3>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
