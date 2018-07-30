@@ -1,7 +1,3 @@
-.gif-result {
-  background-color: red;
-}
-
 .navbar-expand-lg .navbar-nav.side-nav {
   flex-direction: none;
 }
@@ -141,21 +137,5 @@
     font-size: x-large;
   }
 }
-a {
-  color: white;
-}
 
-a:hover {
-  color: #6888a8;
-  text-decoration: none;
-}
-
-.animate {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=navbar.css.map */

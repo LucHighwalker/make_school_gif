@@ -1,3 +1,10 @@
-  {{#each gifs}}
-    <img src="{{this.images.fixed_height.url}}"> 
-  {{/each}}
+ {{#each gifs}}
+
+<div class="gif-result">
+  <img src="{{this.images.fixed_height.url}}">
+  <div class="gif-info">
+    <h3 class="gif-title">{{this.title}}</h3>
+  </div>
+</div>
+
+{{/each}}

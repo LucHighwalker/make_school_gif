@@ -1,14 +1,5 @@
-a {
-    color: white;
-}
-
-a:hover {
-    color: #6888a8;
-    text-decoration: none;
-}
-
 .navbar-expand-lg .navbar-nav.side-nav {
-    flex-direction: column;
+    flex-direction: none;
 }
 
 .header-top {
@@ -136,12 +127,4 @@ a:hover {
     .dropdown-submenu {
         font-size: x-large;
     }
-}
-
-.animate {
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    -o-transition: all .3s ease-in-out;
-    -ms-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out
 }
