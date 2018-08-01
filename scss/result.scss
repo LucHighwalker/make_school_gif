@@ -110,13 +110,15 @@
         text-overflow: clip;
         opacity: 0;
         .gif-title {
+            position: relative;
             display: none;
+            z-index: 20;
             height: 50px;
             width: calc(100% - 10px);
             left: 5px;
             margin: 5px;
+            margin-bottom: 215px;
             overflow: hidden;
-            position: relative;
             h3 {
                 color: white;
                 text-shadow: 2px 2px black;

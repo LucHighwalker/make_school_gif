@@ -7,6 +7,22 @@ var giphy = require('giphy-api')();
 var catJSON = require(__dirname + '/public/JSON/categories.json');
 var categories = JSON.parse(JSON.stringify(catJSON));
 
+var firebase = require('firebase');
+
+var config = {
+    apiKey: "AIzaSyAKnz2r0PBnstYUZSMvNUtJ3JP3ZqpLytw",
+    authDomain: "notjif.firebaseapp.com",
+    databaseURL: "https://notjif.firebaseio.com",
+    projectId: "notjif",
+    storageBucket: "notjif.appspot.com",
+    messagingSenderId: "390698485567"
+};
+firebase.initializeApp(config);
+
+var firestore = firebase.firestore();
+var storeSettings = { timestampsInSnapshots: true };
+firestore.settings(storeSettings);
+
 app.engine('hbs', exphbs({
     extname: 'hbs',
     defaultLayout: 'main',
@@ -29,6 +45,22 @@ app.get('/', function (req, res) {
     res.render('home', {
         navSearch: false,
         catList: categories
+    });
+});
+
+app.get('/favorites', function (req, res) {
+    var docRef = firestore.collection('users').doc('testuser');
+
+    docRef.get().then((doc) => {
+        var data = doc.data();
+
+        res.render('result', {
+            gifs: data.favorites,
+            navSearch: true,
+            catList: categories
+        });
+    }).catch((error) => {
+        console.error('error loading favorites: ' + error);
     });
 });
 
