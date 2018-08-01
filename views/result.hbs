@@ -1,6 +1,6 @@
 <div class="container">
   {{#each gifs}}
-  <div class="gif-result animate">
+  <div class="gif-result animate" onclick="test({{json this}})">
     <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
     <div class="gif-info animate">
       <div class="gif-title">

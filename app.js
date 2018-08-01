@@ -11,7 +11,12 @@ app.engine('hbs', exphbs({
     extname: 'hbs',
     defaultLayout: 'main',
     layoutsDir: __dirname + '/views/layouts',
-    partialsDir: __dirname + '/views/partials'
+    partialsDir: __dirname + '/views/partials',
+    helpers: {
+        json: function (context) {
+            return JSON.stringify(context).replace(/"/g, "'");
+        }
+    }
 }));
 app.set('view engine', 'hbs');
 app.use(express.static('public'));
