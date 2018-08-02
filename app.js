@@ -24,18 +24,18 @@ var storeSettings = { timestampsInSnapshots: true };
 firestore.settings(storeSettings);
 
 var favorites = [];
-var favIDList = [];
+var favIDs = [];
 var updateFavs = function () {
     return new Promise((resolve, reject) => {
         favorites = [];
-        favIDList = [];
+        favIDs = [];
         var docRef = firestore.collection('users').doc('testuser');
 
         docRef.get().then((doc) => {
             var data = doc.data();
             favorites = data.favorites;
             for (var i = 0; i < favorites.length; i++) {
-                favIDList.push(favorites[i].id);
+                favIDs.push(favorites[i].id);
             }
             resolve('success');
         }).catch((error) => {
@@ -43,6 +43,18 @@ var updateFavs = function () {
             reject(error)
         });
     });
+}
+
+// Possible to move to client?
+var getFocused = function (gifs, focused) {
+    var focusedGif = null;
+    for (var i = 0; i < gifs.length; i++) {
+        if (focused === gifs[i].id) {
+            focusedGif = gifs[i];
+            break;
+        }
+    }
+    return focusedGif;
 }
 
 app.engine('hbs', exphbs({
@@ -56,8 +68,8 @@ app.engine('hbs', exphbs({
         },
         favorited: function (gifID) {
             var favorite = false;
-            for (var i = 0; i < favIDList.length; i++) {
-                if (gifID === favIDList[i]) {
+            for (var i = 0; i < favIDs.length; i++) {
+                if (gifID === favIDs[i]) {
                     favorite = true;
                     break;
                 }
@@ -82,9 +94,13 @@ app.get('/', function (req, res) {
 
 app.get('/favorites', function (req, res) {
     updateFavs().then(() => {
+        var focusID = req.query.focus ? req.query.focus: null;
+        var focused = focusID ? getFocused(favorites, focusID) : null;
+
         res.render('result', {
             gifs: favorites,
-            favIDs: favIDList,
+            favIDs: favIDs,
+            focused: focused,
             reloadChange: true,
             navSearch: true,
             catList: categories
@@ -97,11 +113,16 @@ app.get('/favorites', function (req, res) {
 app.get('/search', function (req, res) {
     updateFavs().then(() => {
         var input = req.query.term ? req.query.term : ' ';
+        var focusID = req.query.focus ? req.query.focus: null;
 
         giphy.search(input, function (error, response) {
+            var gifs = response.data;
+            var focused = focusID ? getFocused(gifs, focusID) : null;
+
             res.render('result', {
-                gifs: response.data,
-                favIDs: favIDList,
+                gifs: gifs,
+                favIDs: favIDs,
+                focused: focused,
                 reloadChange: false,
                 navSearch: true,
                 catList: categories

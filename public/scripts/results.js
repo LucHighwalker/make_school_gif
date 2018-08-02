@@ -9,6 +9,28 @@ var findIndex = function (array, obj) {
     return index;
 }
 
+var focusGif = function (gifID) {
+    var curURL = window.location.href;
+    var joinSymbol = '?';
+
+    if (curURL.includes('?')) {
+        joinSymbol = '&';
+    }
+
+    window.location.href = curURL + joinSymbol + $.param({focus: gifID});
+}
+
+var unfocusGif = function (gifID) {
+    var curURL = window.location.href;
+    var focusParam = $.param({focus: gifID});
+    var paramIndex = curURL.indexOf(focusParam);
+
+    var remove = curURL.slice(paramIndex - 1, curURL.length);
+    var newURL = curURL.replace(remove, '');
+
+    window.location.href = newURL;
+}
+
 var toggleFavorite = function (gif) {
     var docRef = firestore.collection('users').doc('testuser');
 
