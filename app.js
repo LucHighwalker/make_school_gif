@@ -23,6 +23,10 @@ var firestore = firebase.firestore();
 var storeSettings = { timestampsInSnapshots: true };
 firestore.settings(storeSettings);
 
+var updateFavorites = function () {
+    
+}
+
 app.engine('hbs', exphbs({
     extname: 'hbs',
     defaultLayout: 'main',
@@ -56,6 +60,7 @@ app.get('/favorites', function (req, res) {
 
         res.render('result', {
             gifs: data.favorites,
+            reloadChange: true,
             navSearch: true,
             catList: categories
         });
@@ -70,6 +75,7 @@ app.get('/search', function (req, res) {
     giphy.search(input, function (err, response) {
         res.render('result', {
             gifs: response.data,
+            reloadChange: false,
             navSearch: true,
             catList: categories
         });

@@ -117,7 +117,7 @@
             width: calc(100% - 10px);
             left: 5px;
             margin: 5px;
-            margin-bottom: 215px;
+            margin-bottom: 170px;
             overflow: hidden;
             h3 {
                 color: white;
@@ -129,6 +129,14 @@
                 text-align: center;
             }
         }
+        .gif-favorite {
+            font-size: x-large;
+            color: white;
+            transform: scale(1, 1);
+            text-shadow: 2px 2px black;
+            margin: 10px;
+            cursor: pointer;
+        }
     }
 }
 
@@ -139,7 +147,7 @@
     box-shadow: 6px 6px 10px #272727;
     .gif-image {
         opacity: 1;
-        transform: scale(1.35, 1.35);
+        transform: scale(1.32, 1.32);
     }
     .gif-info {
         opacity: 1;
@@ -154,6 +162,10 @@
                 -webkit-animation: title-scroll 7s linear infinite;
                 animation: title-scroll 7s linear infinite;
             }
+        }
+        .gif-favorite:hover {
+            color: yellow;
+            transform: scale(1.2, 1.2);
         }
     }
 }

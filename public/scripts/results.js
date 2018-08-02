@@ -10,7 +10,6 @@ var findIndex = function (array, obj) {
 }
 
 var toggleFavorite = function (gif) {
-    console.log(gif);
     var docRef = firestore.collection('users').doc('testuser');
 
     docRef.get().then((doc) => {

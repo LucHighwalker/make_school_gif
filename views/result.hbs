@@ -2,12 +2,13 @@
 
 <div class="container">
   {{#each gifs}}
-  <div class="gif-result animate" onclick="toggleFavorite({{json this}})">
+  <div class="gif-result animate">
     <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
     <div class="gif-info animate">
       <div class="gif-title">
         <h3>{{this.title}}</h3>
       </div>
+      <i class="material-icons gif-favorite animate" onclick="toggleFavorite({{json this}})">star</i>
     </div>
   </div>
   {{/each}}
