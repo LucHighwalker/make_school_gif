@@ -23,8 +23,26 @@ var firestore = firebase.firestore();
 var storeSettings = { timestampsInSnapshots: true };
 firestore.settings(storeSettings);
 
-var updateFavorites = function () {
-    
+var favorites = [];
+var favIDList = [];
+var updateFavs = function () {
+    return new Promise((resolve, reject) => {
+        favorites = [];
+        favIDList = [];
+        var docRef = firestore.collection('users').doc('testuser');
+
+        docRef.get().then((doc) => {
+            var data = doc.data();
+            favorites = data.favorites;
+            for (var i = 0; i < favorites.length; i++) {
+                favIDList.push(favorites[i].id);
+            }
+            resolve('success');
+        }).catch((error) => {
+            console.error('error loading favorites: ');
+            reject(error)
+        });
+    });
 }
 
 app.engine('hbs', exphbs({
@@ -35,6 +53,16 @@ app.engine('hbs', exphbs({
     helpers: {
         json: function (context) {
             return JSON.stringify(context).replace(/"/g, "'");
+        },
+        favorited: function (gifID) {
+            var favorite = false;
+            for (var i = 0; i < favIDList.length; i++) {
+                if (gifID === favIDList[i]) {
+                    favorite = true;
+                    break;
+                }
+            }
+            return favorite ? 'favorited' : '';
         }
     }
 }));
@@ -53,35 +81,37 @@ app.get('/', function (req, res) {
 });
 
 app.get('/favorites', function (req, res) {
-    var docRef = firestore.collection('users').doc('testuser');
-
-    docRef.get().then((doc) => {
-        var data = doc.data();
-
+    updateFavs().then(() => {
         res.render('result', {
-            gifs: data.favorites,
+            gifs: favorites,
+            favIDs: favIDList,
             reloadChange: true,
             navSearch: true,
             catList: categories
         });
     }).catch((error) => {
-        console.error('error loading favorites: ' + error);
+        console.error(error);
     });
 });
 
 app.get('/search', function (req, res) {
-    var input = req.query.term ? req.query.term : ' ';
+    updateFavs().then(() => {
+        var input = req.query.term ? req.query.term : ' ';
 
-    giphy.search(input, function (err, response) {
-        res.render('result', {
-            gifs: response.data,
-            reloadChange: false,
-            navSearch: true,
-            catList: categories
+        giphy.search(input, function (error, response) {
+            res.render('result', {
+                gifs: response.data,
+                favIDs: favIDList,
+                reloadChange: false,
+                navSearch: true,
+                catList: categories
+            });
+
+            if (error !== null) {
+                console.error(error);
+            }
         });
-
-        if (err !== null) {
-            console.error(err);
-        }
+    }).catch((error) => {
+        console.error(error);
     });
 });

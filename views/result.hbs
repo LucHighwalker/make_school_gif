@@ -8,7 +8,7 @@
       <div class="gif-title">
         <h3>{{this.title}}</h3>
       </div>
-      <i class="material-icons gif-favorite animate" onclick="toggleFavorite({{json this}})">star</i>
+      <i class="material-icons gif-favorite {{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>
     </div>
   </div>
   {{/each}}
