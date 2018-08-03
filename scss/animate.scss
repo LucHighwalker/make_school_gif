@@ -1370,6 +1370,31 @@
   animation-name: fadeIn;
 }
 
+@-webkit-keyframes fadeInQuart {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.25;
+  }
+}
+
+@keyframes fadeInQuart {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.25;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeInQuart;
+  animation-name: fadeInQuart;
+}
+
 @-webkit-keyframes fadeInDown {
   from {
     opacity: 0;

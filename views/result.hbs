@@ -2,13 +2,16 @@
 
 <div class="container">
   {{#each gifs}}
-  <div class="gif-result animate" onclick="focusGif('{{this.id}}')">
-    <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
-    <div class="gif-info animate">
+  <div class="gif-result animate">
+    <img class="gif-image animate" src="{{this.images.fixed_height.url}}" onclick="focusGif('{{this.id}}')">
+    <div class="gif-focus animate">
       <div class="gif-title">
         <h3>{{this.title}}</h3>
       </div>
       <i class="material-icons gif-favorite {{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>
+      <i class="material-icons gif-info animate" onclick="focusGif('{{this.id}}')">info</i>
+      <img class="gif-focus-bg" src="images/bgfade.png">
+      <img class="gif-focus-bg top" src="images/bgfade.png">
     </div>
   </div>
   {{/each}}
