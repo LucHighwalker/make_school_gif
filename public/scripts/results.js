@@ -17,7 +17,9 @@ var focusGif = function (gifID) {
         joinSymbol = '&';
     }
 
-    window.location.href = curURL + joinSymbol + $.param({focus: gifID});
+    history.pushState(null, null, curURL + joinSymbol + $.param({focus: gifID}));
+    window.location.reload();
+    // window.location.href = curURL + joinSymbol + $.param({focus: gifID});
 }
 
 var unfocusGif = function (gifID) {
@@ -28,7 +30,8 @@ var unfocusGif = function (gifID) {
     var remove = curURL.slice(paramIndex - 1, curURL.length);
     var newURL = curURL.replace(remove, '');
 
-    window.location.href = newURL;
+    history.pushState(null, null, newURL);
+    window.location.reload();
 }
 
 var toggleFavorite = function (gif) {
