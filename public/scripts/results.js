@@ -21,18 +21,6 @@ var focusGif = function (gifID) {
     window.location.reload();
 }
 
-var unfocusGif = function (gifID) {
-    var curURL = window.location.href;
-    var focusParam = $.param({focus: gifID});
-    var paramIndex = curURL.indexOf(focusParam);
-
-    var remove = curURL.slice(paramIndex - 1, curURL.length);
-    var newURL = curURL.replace(remove, '');
-
-    history.pushState(null, null, newURL);
-    window.location.reload();
-}
-
 var toggleFavorite = function (gif) {
     var docRef = firestore.collection('users').doc('testuser');
 
