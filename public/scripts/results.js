@@ -19,7 +19,6 @@ var focusGif = function (gifID) {
 
     history.pushState(null, null, curURL + joinSymbol + $.param({focus: gifID}));
     window.location.reload();
-    // window.location.href = curURL + joinSymbol + $.param({focus: gifID});
 }
 
 var unfocusGif = function (gifID) {

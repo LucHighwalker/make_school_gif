@@ -1,0 +1,40 @@
+.gif-off-click {
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.25;
+    -moz-animation: fadeInQuart 0.3s ease-in;
+    -webkit-animation: fadeInQuart 0.3s ease-in;
+    animation: fadeInQuart 0.3s ease-in;
+}
+
+.gif-focused {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 680px;
+    margin: auto;
+    border: 2px solid #353535;
+    border-radius: 5px;
+    background-color: #585f66;
+    box-shadow: 8px 8px 10px #353535;
+    -moz-animation: zoomInDown 1s ease-in;
+    -webkit-animation: zoomInDown 1s ease-in;
+    animation: zoomInDown 1s ease-in;
+    .gif-image {
+        position: relative;
+        display: block;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    }
+}

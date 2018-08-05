@@ -1,0 +1,6 @@
+{{#if focused}}
+<button class="gif-off-click" onclick="unfocusGif('{{focused.id}}')"></button>
+<div class="gif-focused col-sm-12 col-md-10 col-lg-9 col-xl-8">
+  <img class="gif-image animate" src="{{focused.images.original.url}}">
+</div>
+{{/if}}
