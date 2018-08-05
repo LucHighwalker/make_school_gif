@@ -79,7 +79,9 @@
 
 .gif-result {
     display: inline-block;
-    position: relative;
+    position: sticky;
+    top: -200px;
+    bottom: -420px;
     z-index: 0;
     margin: 5px;
     padding: 10px;
@@ -134,11 +136,12 @@
             position: relative;
             z-index: 20;
             height: 50px;
-            width: calc(100% - 60px);
+            width: calc(100% - 10px);
             left: 5px;
             margin: 5px;
             margin-bottom: 225px;
             overflow: hidden;
+            cursor: pointer;
             h3 {
                 display: none;
                 color: white;
@@ -180,6 +183,9 @@
 }
 
 .gif-result:hover {
+    position: sticky;
+    top: 70px;
+    bottom: 15px;
     z-index: 10;
     margin: -45px;
     padding: 60px;
