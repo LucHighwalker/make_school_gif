@@ -119,9 +119,14 @@ app.get('/favorites', function (req, res) {
 app.get('/search', function (req, res) {
     updateFavs().then(() => {
         var input = req.query.term ? req.query.term : ' ';
+        var page = req.query.page ? req.query.page : 0;
         var focusID = req.query.focus ? req.query.focus: null;
 
-        giphy.search(input, function (error, response) {
+        giphy.search({
+            q: input,
+            limit: 25,
+            offset: page * 25
+        }, function (error, response) {
             var gifs = response.data;
             var focused = focusID ? getFocused(gifs, focusID) : null;
 
@@ -129,6 +134,7 @@ app.get('/search', function (req, res) {
                 gifs: gifs,
                 favIDs: favIDs,
                 focused: focused,
+                curPage: page,
                 reloadChange: false,
                 navSearch: true,
                 catList: categories

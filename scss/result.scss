@@ -77,6 +77,45 @@
     }
 }
 
+.page-btn {
+    position: fixed;
+    z-index: 50;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: inherit;
+    border-style: none;
+    opacity: 0.25;
+    .material-icons {
+        font-size: 50px;
+        color: $light-grey;
+        transform: scale(1, 1);
+    }
+}
+.page-btn.next {
+    right: 0;
+}
+.page-btn.prev {
+    left: 0;
+}
+
+.page-btn:hover {
+    opacity: 0.75;
+    .material-icons {
+        transform: scale(1.2, 1.2);
+    }
+}
+
+.page-btn:focus {
+    outline: none;
+    .material-icons {
+        transform: scale(1, 1);
+        -moz-animation: rubberBand 1s ease;
+        -webkit-animation: rubberBand 1s ease;
+        animation: rubberBand 1s ease;
+    }
+}
+
 .gif-result {
     display: inline-block;
     position: sticky;
@@ -108,7 +147,7 @@
         opacity: 1;
         transform: scale(1, 1);
     }
-    .gif-focus {
+    .gif-hover {
         display: block;
         position: absolute;
         z-index: 10;
@@ -118,7 +157,7 @@
         white-space: nowrap;
         text-overflow: clip;
         opacity: 0;
-        .gif-focus-bg {
+        .gif-hover-bg {
             position: absolute;
             z-index: 10;
             left: 0;
@@ -128,7 +167,7 @@
             opacity: 0.5;
             user-select: none;
         }
-        .gif-focus-bg.top {
+        .gif-hover-bg.top {
             transform: rotate(180deg);
             top: -25px;
         }
@@ -197,7 +236,7 @@
         opacity: 0;
         transform: scale(1.6, 1.6);
     }
-    .gif-focus {
+    .gif-hover {
         opacity: 1;
         .gif-title {
             h3 {

@@ -1,17 +1,24 @@
 <script src="scripts/results.js"></script>
 
+<button class="page-btn prev animate" onclick="prevPage({{curPage}})">
+  <i class="material-icons animate">chevron_left</i>
+</button>
+<button class="page-btn next animate" onclick="nextPage({{curPage}})">
+  <i class="material-icons animate">chevron_right</i>
+</button>
+
 <div class="container">
   {{#each gifs}}
   <div class="gif-result animate">
     <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
     <img class="gif-image animate static" src="{{this.images.fixed_height_still.url}}">
-    <div class="gif-focus animate">
-      <img class="gif-focus-bg top" src="images/bgfade2.png">
+    <div class="gif-hover animate">
+      <img class="gif-hover-bg top" src="images/bgfade.png">
+      <img class="gif-hover-bg" src="images/bgfade.png">
       <div class="gif-title{{scrollTitle this}} animate" onclick="focusGif('{{this.id}}')">
         <h3>{{this.title}}</h3>
       </div>
       <i class="material-icons gif-favorite{{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>
-      <img class="gif-focus-bg" src="images/bgfade2.png">
     </div>
   </div>
   {{/each}}
