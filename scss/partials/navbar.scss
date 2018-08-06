@@ -3,7 +3,7 @@
 }
 
 .header-top {
-    box-shadow: 0 3px 5px grey;
+    box-shadow: 0 3px 5px $dark-grey;
 }
 
 .leftmenutrigger {
@@ -15,19 +15,19 @@
 }
 
 .dropdown-toggle:hover {
-    color: #6888a8;
+    color: $blue-grey;
     text-decoration: none;
 }
 
 .dropdown-menu {
     padding: 15px;
     font-size: large;
-    background-color: #585f66;
+    background-color: $light-grey;
 }
 
 .dropdown-submenu {
     position: relative;
-    background-color: #585f66;
+    background-color: $light-grey;
 }
 
 .dropdown-submenu>.dropdown-menu {
@@ -56,7 +56,7 @@
     border-left-color: #ccc;
     margin-top: 5px;
     margin-right: 5px;
-    background-color: #585f66;
+    background-color: $light-grey;
 }
 
 .dropdown-submenu:hover>a:after {
@@ -88,7 +88,7 @@
         left: 0;
     }
     .navbar-nav.side-nav {
-        background: #585f66;
+        background: $light-grey;
         box-shadow: 2px 1px 2px rgba(0, 0, 0, .1);
         position: fixed;
         top: 56px;

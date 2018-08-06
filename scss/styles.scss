@@ -1,5 +1,7 @@
 //libraries
 @import "animate";
+//variables
+@import "variables";
 //views
 @import "home";
 @import "result";
@@ -8,11 +10,11 @@
 @import "partials/navbar";
 @import "partials/search";
 body {
-    background-color: #6888a8;
+    background-color: $blue-grey;
 }
 
 html {
-    background-color: #6888a8;
+    background-color: $blue-grey;
 }
 
 a {
@@ -20,7 +22,7 @@ a {
 }
 
 a:hover {
-    color: #6888a8;
+    color: $blue-grey;
     text-decoration: none;
 }
 

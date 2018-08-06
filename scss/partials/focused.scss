@@ -21,10 +21,10 @@
     left: 0;
     height: 680px;
     margin: auto;
-    border: 2px solid #353535;
+    border: 2px solid $dark-grey;
     border-radius: 5px;
-    background-color: #585f66;
-    box-shadow: 8px 8px 10px #353535;
+    background-color: $light-grey;
+    box-shadow: 8px 8px 10px $dark-grey;
     -moz-animation: zoomInDown 1s ease-in;
     -webkit-animation: zoomInDown 1s ease-in;
     animation: zoomInDown 1s ease-in;
