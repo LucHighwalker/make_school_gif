@@ -7,7 +7,7 @@
     <img class="gif-image animate static" src="{{this.images.fixed_height_still.url}}">
     <div class="gif-focus animate">
       <img class="gif-focus-bg top" src="images/bgfade2.png">
-      <div class="gif-title{{scrollTitle this}}" onclick="focusGif('{{this.id}}')">
+      <div class="gif-title{{scrollTitle this}} animate" onclick="focusGif('{{this.id}}')">
         <h3>{{this.title}}</h3>
       </div>
       <i class="material-icons gif-favorite{{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>

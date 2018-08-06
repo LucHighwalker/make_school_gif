@@ -10,11 +10,11 @@
 @import "partials/navbar";
 @import "partials/search";
 body {
-    background-color: $blue-grey;
+    background-color: $highlight;
 }
 
 html {
-    background-color: $blue-grey;
+    background-color: $highlight;
 }
 
 a {
@@ -22,7 +22,7 @@ a {
 }
 
 a:hover {
-    color: $blue-grey;
+    color: $highlight;
     text-decoration: none;
 }
 

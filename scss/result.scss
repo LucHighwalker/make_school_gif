@@ -140,11 +140,11 @@
             left: 5px;
             margin: 5px;
             margin-bottom: 225px;
+            color: white;
             overflow: hidden;
             cursor: pointer;
             h3 {
                 display: none;
-                color: white;
                 text-shadow: 2px 2px black;
                 position: absolute;
                 width: 100%;
@@ -213,6 +213,9 @@
                 -webkit-animation: title-scroll 7s linear infinite;
                 animation: title-scroll 7s linear infinite;
             }
+        }
+        .gif-title:hover {
+            color: $highlight;
         }
         .gif-favorite:hover {
             color: $yellow;
