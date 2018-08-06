@@ -1,4 +1,4 @@
-.gif-off-click {
+.focus-off-click {
     position: fixed;
     z-index: 90;
     top: 0;
@@ -12,7 +12,7 @@
     animation: fadeInQuart 0.3s ease-in;
 }
 
-.gif-focused {
+.focused {
     position: fixed;
     z-index: 100;
     top: 0;
@@ -28,8 +28,14 @@
     -moz-animation: zoomInDown 1s ease-in;
     -webkit-animation: zoomInDown 1s ease-in;
     animation: zoomInDown 1s ease-in;
-    .gif-image {
+    .focused-title {
+        text-align: center;
         position: relative;
+        color: white;
+        text-shadow: 2px 2px black;
+    }
+    .focused-image {
+        position: absolute;
         display: block;
         top: 0;
         right: 0;
