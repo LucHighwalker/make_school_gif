@@ -6,10 +6,10 @@
     <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
     <img class="gif-image animate static" src="{{this.images.fixed_height_still.url}}">
     <div class="gif-focus animate">
-      <div class="gif-title" onclick="focusGif('{{this.id}}')">
+      <div class="gif-title{{scrollTitle this}}" onclick="focusGif('{{this.id}}')">
         <h3>{{this.title}}</h3>
       </div>
-      <i class="material-icons gif-favorite {{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>
+      <i class="material-icons gif-favorite{{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>
       <img class="gif-focus-bg" src="images/bgfade2.png">
       <img class="gif-focus-bg top" src="images/bgfade2.png">
     </div>

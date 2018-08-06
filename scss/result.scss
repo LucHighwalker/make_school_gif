@@ -205,6 +205,10 @@
                 -moz-transform: translateX(0);
                 -webkit-transform: translateX(0);
                 transform: translateX(0);
+            }
+        }
+        .gif-title.scroll {
+            h3 {
                 -moz-animation: title-scroll 7s linear infinite;
                 -webkit-animation: title-scroll 7s linear infinite;
                 animation: title-scroll 7s linear infinite;

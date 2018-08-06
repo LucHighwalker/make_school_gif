@@ -63,8 +63,14 @@ app.engine('hbs', exphbs({
     layoutsDir: __dirname + '/views/layouts',
     partialsDir: __dirname + '/views/partials',
     helpers: {
-        json: function (context) {
-            return JSON.stringify(context).replace(/"/g, "'");
+        json: function (obj) {
+            return JSON.stringify(obj).replace(/"/g, "'");
+        },
+        scrollTitle: function (gif) {
+            var title = gif.title;
+            var width = gif.images.fixed_height.width;
+            
+            return (title.length > (width / 10) + 2) ? ' scroll' : '';
         },
         favorited: function (gifID) {
             var favorite = false;
@@ -74,7 +80,7 @@ app.engine('hbs', exphbs({
                     break;
                 }
             }
-            return favorite ? 'favorited' : '';
+            return favorite ? ' favorited' : '';
         }
     }
 }));
