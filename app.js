@@ -66,10 +66,32 @@ app.engine('hbs', exphbs({
         json: function (obj) {
             return JSON.stringify(obj).replace(/"/g, "'");
         },
+        stringify: function (val) {
+            return val ? val : 'N/A';
+        },
+        formatDate: function (dateString) {
+            if (dateString !== undefined) {
+                var monthNames = [
+                    "January", "February", "March",
+                    "April", "May", "June", "July",
+                    "August", "September", "October",
+                    "November", "December"
+                  ];
+
+                var date = new Date(dateString);
+                var month = date.getMonth();
+                var day = date.getDate();
+                var year = date.getFullYear();
+
+                return monthNames[month] + ' ' + day + ' ' + year;
+            } else {
+                return 'N/A';
+            }
+        },
         scrollTitle: function (gif) {
             var title = gif.title;
             var width = gif.images.fixed_height.width;
-            
+
             return (title.length > (width / 10) + 2) ? ' scroll' : '';
         },
         favorited: function (gifID) {
@@ -101,7 +123,7 @@ app.get('/', function (req, res) {
 app.get('/favorites', function (req, res) {
     updateFavs().then(() => {
         var page = req.query.page ? req.query.page : 0;
-        var focusID = req.query.focus ? req.query.focus: null;
+        var focusID = req.query.focus ? req.query.focus : null;
         var focused = focusID ? getFocused(favorites, focusID) : null;
 
         res.render('result', {
@@ -122,7 +144,7 @@ app.get('/search', function (req, res) {
     updateFavs().then(() => {
         var input = req.query.term ? req.query.term : ' ';
         var page = req.query.page ? req.query.page : 0;
-        var focusID = req.query.focus ? req.query.focus: null;
+        var focusID = req.query.focus ? req.query.focus : null;
 
         giphy.search({
             q: input,
