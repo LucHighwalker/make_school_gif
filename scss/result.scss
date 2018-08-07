@@ -86,6 +86,7 @@
     background-color: inherit;
     border-style: none;
     opacity: 0.25;
+    cursor: pointer;
     .material-icons {
         font-size: 50px;
         color: $light-grey;
@@ -129,7 +130,7 @@
     border: 2px solid $dark-grey;
     border-radius: 5px;
     background-color: $light-grey;
-    box-shadow: 2px 2px 2px $light-grey;
+    box-shadow: 1px 1px 2px $dark-grey;
     overflow: hidden;
     .gif-image {
         position: absolute;
@@ -142,19 +143,6 @@
         margin: auto;
         border-radius: 5px;
         transform: scale(1, 1);
-    }
-    .gif-separator {
-        position: absolute;
-        display: block;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        width: 500px;
-        height: 500px;
-        background-color: $light-grey;
-        opacity: 1;
     }
     .gif-image.static {
         position: relative;
@@ -252,9 +240,6 @@
     box-shadow: 8px 8px 20px $dark-grey;
     .gif-image {
         transform: scale(1.6, 1.6);
-    }
-    .gif-separator {
-        opacity: 0;
     }
     .gif-image.static {
         opacity: 0;

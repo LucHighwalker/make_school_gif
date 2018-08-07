@@ -29,18 +29,75 @@
     -webkit-animation: zoomInDown 1s ease-in;
     animation: zoomInDown 1s ease-in;
     .focused-title {
-        text-align: center;
         position: relative;
+        z-index: 20;
         color: white;
+        text-align: center;
         text-shadow: 2px 2px black;
+        cursor: default;
     }
-    .focused-image {
+    .focused-loading {
         position: absolute;
         display: block;
+        height: 100px;
+        width: auto;
+        z-index: 0;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
         margin: auto;
+    }
+    .focused-image {
+        position: absolute;
+        display: block;
+        z-index: 10;
+        min-height: 300px;
+        min-width: 100px;
+        height: auto;
+        width: auto;
+        max-height: 600px;
+        max-width: 85%;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px $dark-grey;
+        transform: scale(1, 1);
+    }
+    .focused-image:hover {
+        z-index: 30;
+        box-shadow: 8px 8px 20px $dark-grey;
+        transform: scale(1.1, 1.1);
+    }
+    .gif-favorite {
+        position: relative;
+        z-index: 20;
+        font-size: x-large;
+        color: white;
+        transform: scale(1.5, 1.5);
+        text-shadow: 2px 2px black;
+        margin: 10px;
+        cursor: pointer;
+    }
+    .gif-favorite.favorited {
+        color: $yellow;
+        transform: scale(1.8, 1.8);
+    }
+    .gif-favorite:hover {
+        color: $yellow;
+        -moz-animation: rubberBandLarge 1s ease;
+        -webkit-animation: rubberBandLarge 1s ease;
+        animation: rubberBandLarge 1s ease;
+    }
+    .focused-info {
+        position: relative;
+        z-index: 20;
+        color: white;
+        text-shadow: 2px 2px black;
+        font-size: x-large;
+        list-style-type: none;
     }
 }

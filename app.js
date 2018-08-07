@@ -100,6 +100,7 @@ app.get('/', function (req, res) {
 
 app.get('/favorites', function (req, res) {
     updateFavs().then(() => {
+        var page = req.query.page ? req.query.page : 0;
         var focusID = req.query.focus ? req.query.focus: null;
         var focused = focusID ? getFocused(favorites, focusID) : null;
 
@@ -107,6 +108,7 @@ app.get('/favorites', function (req, res) {
             gifs: favorites,
             favIDs: favIDs,
             focused: focused,
+            curPage: page,
             reloadChange: true,
             navSearch: true,
             catList: categories

@@ -4,6 +4,14 @@
 <button class="focus-off-click" onclick="unfocusGif('{{focused.id}}')"></button>
 <div class="focused col-sm-12 col-md-10 col-lg-9 col-xl-8">
   <h1 class="focused-title">{{focused.title}}</h1>
-  <img class="focused-image" src="{{focused.images.original.url}}">
+  <img class="focused-loading" src="images/loading.gif">
+  <img class="focused-image animate" src="{{focused.images.original.url}}">
+  <i class="material-icons gif-favorite{{favorited focused.id}} animate" onclick="toggleFavorite({{json focused}})">star</i>
+  <ul class="focused-info">
+    <li>rating: {{focused.rating}}</li>
+    <li>source: <a target="_blank" href="{{focused.source}}">{{focused.source_tld}}</a></li>
+    <li>username: {{focused.username}}</li>
+    <li>upload date: {{focused.import_datetime}}</li>
+  </ul>
 </div>
 {{/if}}
