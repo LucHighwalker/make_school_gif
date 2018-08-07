@@ -83,7 +83,7 @@ app.engine('hbs', exphbs({
                 var day = date.getDate();
                 var year = date.getFullYear();
 
-                return monthNames[month] + ' ' + day + ' ' + year;
+                return monthNames[month - 1] + ' ' + day + ' ' + year;
             } else {
                 return 'N/A';
             }
