@@ -72,18 +72,41 @@ app.engine('hbs', exphbs({
         formatDate: function (dateString) {
             if (dateString !== undefined) {
                 var monthNames = [
-                    "January", "February", "March",
-                    "April", "May", "June", "July",
-                    "August", "September", "October",
-                    "November", "December"
-                  ];
+                    'January ', 'February ', 'March ',
+                    'April ', 'May ', 'June ', 'July ',
+                    'August ', 'September ', 'October ',
+                    'November ', 'December '
+                ];
 
                 var date = new Date(dateString);
                 var month = date.getMonth();
                 var day = date.getDate();
                 var year = date.getFullYear();
 
-                return monthNames[month] + ' ' + day + ' ' + year;
+                var dayExt = ' ';
+                switch (day) {
+                    case 1:
+                    case 21:
+                    case 31:
+                        dayExt = 'st ';
+                        break;
+
+                    case 2:
+                    case 22:
+                        dayExt = 'nd ';
+                        break;
+
+                    case 3:
+                    case 23:
+                        dayExt = 'rd ';
+                        break;
+
+                    default:
+                        dayExt = 'th ';
+                        break;
+                }
+
+                return monthNames[month] + day + dayExt + year;
             } else {
                 return 'N/A';
             }

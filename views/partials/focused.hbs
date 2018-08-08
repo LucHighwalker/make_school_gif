@@ -3,10 +3,7 @@
 <div class="focused col-sm-12 col-md-10 col-lg-9 col-xl-8">
   <h1 class="focused-title">{{focused.title}}</h1>
   <img class="focused-loading" src="images/loading.gif">
-  <a href="{{focused.images.original.url}}" target="_blank">
-    <img class="focused-image animate" src="{{focused.images.original.url}}">
-  </a>
-  <i class="material-icons gif-favorite{{favorited focused.id}} animate" onclick="toggleFavorite({{json focused}})">star</i>
+  <img class="focused-image animate" src="{{focused.images.original.url}}">
   <ul class="focused-info">
     <li>rating: {{stringify focused.rating}}</li>
     {{#if focused.source_tld}}
@@ -19,5 +16,12 @@
     <li>username: {{stringify focused.username}}</li>
     <li>upload date: {{formatDate focused.import_datetime}}</li>
   </ul>
+  <div class="focused-controls">
+    <i class="material-icons gif-favorite{{favorited focused.id}} animate" onclick="toggleFavorite({{json focused}})">star</i>
+    <a href="{{focused.images.original.url}}" target="_blank" download="notJif_{{focused.id}}">
+      <i class="material-icons animate">save_alt</i>
+    </a>
+    <i class="material-icons animate">share</i>
+  </div>
 </div>
 {{/if}}
