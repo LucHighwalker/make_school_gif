@@ -13,6 +13,7 @@
     border: 3px solid $dark-grey;
     border-radius: 5px;
     box-shadow: 6px 6px 10px $dark-grey;
+    overflow: hidden;
     .home-search {
         position: relative;
         display: block;
@@ -22,7 +23,19 @@
         left: 0;
         margin: 50px auto;
     }
+    .dance {
+        position: absolute;
+        display: block;
+        height: 200px;
+        width: auto;
+        right: 15px;
+        bottom: 0;
+        margin: auto;
+        user-select: none;
+        pointer-events: none;
+    }
 }
+
 .home-box.show {
     -moz-animation: bounceInDown 1s ease-in;
     -webkit-animation: bounceInDown 1s ease-in;

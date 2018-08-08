@@ -6,6 +6,17 @@ nav {
     flex-direction: none;
 }
 
+.navbar-brand {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    left: -10px;
+    img {
+        height: 45px;
+        width: 145px;
+    }
+}
+
 .header-top {
     box-shadow: 0 3px 5px $dark-grey;
 }
@@ -105,8 +116,8 @@ nav {
         padding-bottom: 40px
     }
     .nav-search {
-        width: 500px;
-        margin-left: calc(100% - 600px);
+        width: 600px;
+        margin-left: calc(100% - 700px);
         transform: scale(1, 1);
     }
     .nav-search.show {
@@ -134,9 +145,6 @@ nav {
     }
     .navbar-expand-lg {
         font-size: xx-large;
-    }
-    .navbar-brand {
-        font-size: 65px;
     }
     .dropdown-menu {
         font-size: x-large;

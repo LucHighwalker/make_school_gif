@@ -35,6 +35,13 @@ const monthNames = [
     'August ', 'September ', 'October ',
     'November ', 'December '
 ];
+const dances = [
+    'anime', 'anime2', 'carl', 'char', 'dumbfuck', 
+    'dumbfuck1', 'dumbfuck2', 'link', 'lisa', 
+    'mario', 'panda', 'party', 'pbj', 'pixelmj', 
+    'pony', 'rick', 'shark', 'shroom', 'spidey', 
+    'sponge', 'weed'
+]
 
 var curPage = {
     page: null,
@@ -79,9 +86,9 @@ const getFocused = function (gifs, focused) {
     return focusedGif;
 }
 
-const getRandPhrase = function () {
-    var rand = Math.floor(Math.random() * phrases.length);
-    return phrases[rand];
+const getRand = function (array) {
+    var rand = Math.floor(Math.random() * array.length);
+    return array[rand];
 }
 
 const updateCurPage = function (page, focused) {
@@ -215,7 +222,8 @@ app.get('/', function (req, res) {
     updateCurPage(home, null);
     res.render('home', {
         catList: categories,
-        homePhrase: getRandPhrase(),
+        randDance: getRand(dances),
+        randPhrase: getRand(phrases),
         navAnimState: getAnimState('nav'),
         homeAnimState: getAnimState('home')
     });

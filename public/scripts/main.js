@@ -2,6 +2,17 @@ window.addEventListener('popstate', () => {
     window.location.reload();
 }, false);
 
+const findIndex = function (array, obj) {
+    var index = -1;
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].id === obj.id) {
+            index = i;
+            break;
+        }
+    }
+    return index;
+}
+
 const toggleFavorite = function (gif) {
     var docRef = firestore.collection('users').doc('testuser');
 

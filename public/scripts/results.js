@@ -1,24 +1,18 @@
-const findIndex = function (array, obj) {
-    var index = -1;
-    for (var i = 0; i < array.length; i++) {
-        if (array[i].id === obj.id) {
-            index = i;
-            break;
-        }
-    }
-    return index;
-}
+var focusing = false;
 
 const focusGif = function (gifID) {
-    var curURL = window.location.href;
-    var joinSymbol = '?';
+    if (focusing === false) {
+        focusing = true;
+        var curURL = window.location.href;
+        var joinSymbol = '?';
 
-    if (curURL.includes('?')) {
-        joinSymbol = '&';
+        if (curURL.includes('?')) {
+            joinSymbol = '&';
+        }
+
+        history.pushState(null, null, curURL + joinSymbol + $.param({ focus: gifID }));
+        window.location.reload();
     }
-
-    history.pushState(null, null, curURL + joinSymbol + $.param({ focus: gifID }));
-    window.location.reload();
 }
 
 const changePage = function (curPage, mod) {
