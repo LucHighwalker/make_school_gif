@@ -1763,6 +1763,31 @@
   animation-name: fadeOut;
 }
 
+@-webkit-keyframes fadeOutQuart {
+  from {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutQuart {
+  from {
+    opacity: 0.25;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOutQuart;
+  animation-name: fadeOutQuart;
+}
+
 @-webkit-keyframes fadeOutDown {
   from {
     opacity: 1;

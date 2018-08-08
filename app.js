@@ -48,18 +48,33 @@ const getAnimState = function (key) {
             } else if (curPage.page !== home && lastPage.page !== home) {
                 return 'shown';
             } else {
-                console.error('error getting nav anim state going from page (' + 
-                lastPage.page + ') to page (' + curPage.page + ')');
+                console.error('error getting nav anim state going from page (' +
+                    lastPage.page + ') to page (' + curPage.page + ')');
                 return 'error';
             }
 
-            case 'home':
-                if (curPage.page === home && lastPage.page === home) {
-                    return 'shown';
-                } else {
-                    return 'show';
-                }
-    
+        case 'home':
+            if (curPage.page === home && lastPage.page === home) {
+                return 'shown';
+            } else {
+                return 'show';
+            }
+
+        case 'focus': 
+            if (curPage.focused === true && lastPage.focused === true) {
+                return 'shown';
+            } else if (curPage.focused === true && lastPage.focused === false) {
+                return 'show';
+            } else if (curPage.focused === false && lastPage.focused === true) {
+                return 'hide';
+            } else if (curPage.focused === false && lastPage.focused === false) {
+                return 'hidden';
+            } else {
+                console.error('error getting focus anim state going from focus state (' +
+                    lastPage.focused + ') to focus state (' + curPage.focused + ')');
+                return 'error';
+            }
+
         default:
             console.error('invalid key getting anim state.');
             return 'error';
@@ -212,7 +227,8 @@ app.get('/favorites', function (req, res) {
             curPage: page,
             reloadChange: true,
             catList: categories,
-            navAnimState: getAnimState('nav')
+            navAnimState: getAnimState('nav'),
+            focusAnimState: getAnimState('focus')
         });
         updateLastPage(favs, focused);
     }).catch((error) => {
@@ -242,7 +258,8 @@ app.get('/search', function (req, res) {
                 curPage: page,
                 reloadChange: false,
                 catList: categories,
-                navAnimState: getAnimState('nav')
+                navAnimState: getAnimState('nav'),
+                focusAnimState: getAnimState('focus')
             });
             updateLastPage(search, focused);
 

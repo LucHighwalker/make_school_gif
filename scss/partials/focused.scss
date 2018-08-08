@@ -7,9 +7,24 @@
     width: 100%;
     background-color: black;
     opacity: 0.25;
+    transform: scale(1, 1);
+}
+
+.focus-off-click.show {
     -moz-animation: fadeInQuart 0.3s ease-in;
     -webkit-animation: fadeInQuart 0.3s ease-in;
     animation: fadeInQuart 0.3s ease-in;
+}
+
+.focus-off-click.hide {
+    -moz-animation: fadeOutQuart 0.3s ease-in;
+    -webkit-animation: fadeOutQuart 0.3s ease-in;
+    animation: fadeOutQuart 0.3s ease-in;
+    transform: scale(0, 0);
+}
+
+.focus-off-click.hidden {
+    display: none;
 }
 
 .focused {
@@ -25,9 +40,7 @@
     border-radius: 5px;
     background-color: $light-grey;
     box-shadow: 8px 8px 10px $dark-grey;
-    -moz-animation: zoomInDown 1s ease-in;
-    -webkit-animation: zoomInDown 1s ease-in;
-    animation: zoomInDown 1s ease-in;
+    transform: scale(1, 1);
     .focused-title {
         position: relative;
         z-index: 20;
@@ -112,4 +125,21 @@
             color: $yellow;
         }
     }
+}
+
+.focused.show {
+    -moz-animation: zoomInDown 1s ease-in;
+    -webkit-animation: zoomInDown 1s ease-in;
+    animation: zoomInDown 1s ease-in;
+}
+
+.focused.hide {
+    -moz-animation: fadeOut 1s ease-in;
+    -webkit-animation: fadeOut 1s ease-in;
+    animation: fadeOut 1s ease-in;
+    transform: scale(0, 0);
+}
+
+.focused.hidden {
+    display: none;
 }
