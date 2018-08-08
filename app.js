@@ -4,8 +4,16 @@ var app = express();
 var exphbs = require('express-handlebars');
 var giphy = require('giphy-api')();
 
-var catJSON = require(__dirname + '/public/JSON/categories.json');
-var categories = JSON.parse(JSON.stringify(catJSON));
+const catJSON = require(__dirname + '/public/JSON/categories.json');
+const categories = JSON.parse(JSON.stringify(catJSON));
+
+const phrasesJSON = require(__dirname + '/public/JSON/phrases.json');
+const phrases = JSON.parse(JSON.stringify(phrasesJSON));
+
+const getRandPhrase = function () {
+    var rand = Math.floor(Math.random() * phrases.length);
+    return phrases[rand]; 
+}
 
 const home = 'home';
 const favs = 'favorites';
@@ -207,6 +215,7 @@ app.get('/', function (req, res) {
     updateCurPage(home, null);
     res.render('home', {
         catList: categories,
+        homePhrase: getRandPhrase(),
         navAnimState: getAnimState('nav'),
         homeAnimState: getAnimState('home')
     });
