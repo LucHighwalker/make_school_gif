@@ -14,23 +14,19 @@ const monthNames = [
     'November ', 'December '
 ];
 
-const dataJSON = require(__dirname + '/public/JSON/data.json');
-const parsedData = JSON.parse(JSON,stringify(dataJSON));
+const dataJSON = require(__dirname + '/data.json');
+const parsedData = JSON.parse(JSON.stringify(dataJSON));
 
 const categories = parsedData['categories'];
 const dances = parsedData['dances'];
 const phrases = parsedData['phrases'];
 
-const firebase = require('firebase');
+const envJSON = require(__dirname + '/environment.json');
+const parsedEnv = JSON.parse(JSON.stringify(envJSON));
 
-const fireconfig = {
-    apiKey: "AIzaSyAKnz2r0PBnstYUZSMvNUtJ3JP3ZqpLytw",
-    authDomain: "notjif.firebaseapp.com",
-    databaseURL: "https://notjif.firebaseio.com",
-    projectId: "notjif",
-    storageBucket: "notjif.appspot.com",
-    messagingSenderId: "390698485567"
-};
+const fireconfig = parsedEnv['fireconfig'];
+
+const firebase = require('firebase');
 firebase.initializeApp(fireconfig);
 
 const firestore = firebase.firestore();
@@ -148,6 +144,18 @@ app.engine('hbs', exphbs({
     helpers: {
         json: function (obj) {
             return JSON.stringify(obj).replace(/"/g, "'");
+        },
+        getConfig: function (key) {
+            switch (key) {
+                case 'apikey':
+                    return fireconfig.apiKey;
+
+                case 'msgid':
+                    return fireconfig.messagingSenderId;
+            
+                default:
+                   return 'error';
+            }
         },
         stringify: function (val) {
             return val ? val : 'N/A';

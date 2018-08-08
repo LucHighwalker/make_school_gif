@@ -28,12 +28,12 @@
 <script>
     // Initialize Firebase
     var config = {
-        apiKey: "AIzaSyAKnz2r0PBnstYUZSMvNUtJ3JP3ZqpLytw",
-        authDomain: "notjif.firebaseapp.com",
-        databaseURL: "https://notjif.firebaseio.com",
-        projectId: "notjif",
-        storageBucket: "notjif.appspot.com",
-        messagingSenderId: "390698485567"
+        apiKey: "{{getConfig 'apikey'}}",
+        authDomain: "notjif-9c2f4.firebaseapp.com",
+        databaseURL: "https://notjif-9c2f4.firebaseio.com",
+        projectId: "notjif-9c2f4",
+        storageBucket: "notjif-9c2f4.appspot.com",
+        messagingSenderId: "{{getConfig 'msgid'}}"
     };
     firebase.initializeApp(config);
 
@@ -54,5 +54,7 @@
         js = d.createElement(s); js.id = id;
         js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1';
         fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
 </html>
