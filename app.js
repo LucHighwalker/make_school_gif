@@ -4,11 +4,22 @@ const app = express();
 const exphbs = require('express-handlebars');
 const giphy = require('giphy-api')();
 
-const catJSON = require(__dirname + '/public/JSON/categories.json');
-const phrasesJSON = require(__dirname + '/public/JSON/phrases.json');
+const home = 'home';
+const favs = 'favorites';
+const search = 'search';
+const monthNames = [
+    'January ', 'February ', 'March ',
+    'April ', 'May ', 'June ', 'July ',
+    'August ', 'September ', 'October ',
+    'November ', 'December '
+];
 
-const categories = JSON.parse(JSON.stringify(catJSON));
-const phrases = JSON.parse(JSON.stringify(phrasesJSON));
+const dataJSON = require(__dirname + '/public/JSON/data.json');
+const parsedData = JSON.parse(JSON,stringify(dataJSON));
+
+const categories = parsedData['categories'];
+const dances = parsedData['dances'];
+const phrases = parsedData['phrases'];
 
 const firebase = require('firebase');
 
@@ -25,23 +36,6 @@ firebase.initializeApp(fireconfig);
 const firestore = firebase.firestore();
 const storeSettings = { timestampsInSnapshots: true };
 firestore.settings(storeSettings);
-
-const home = 'home';
-const favs = 'favorites';
-const search = 'search';
-const monthNames = [
-    'January ', 'February ', 'March ',
-    'April ', 'May ', 'June ', 'July ',
-    'August ', 'September ', 'October ',
-    'November ', 'December '
-];
-const dances = [
-    'anime', 'anime2', 'carl', 'char', 'dumbfuck', 
-    'dumbfuck1', 'dumbfuck2', 'link', 'lisa', 
-    'mario', 'panda', 'party', 'pbj', 'pixelmj', 
-    'pony', 'rick', 'shark', 'shroom', 'spidey', 
-    'sponge', 'weed'
-]
 
 var curPage = {
     page: null,

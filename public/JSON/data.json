@@ -1,0 +1,37 @@
+{
+    "categories": [
+        "funny",
+        {
+            "name": "animals",
+            "array": [
+                "cat",
+                "dog",
+                "bird",
+                "horse"
+            ]
+        }
+    ],
+    "dances": [
+        "anime", "anime2", "carl", "char", "dumbfuck", 
+        "dumbfuck1", "dumbfuck2", "link", "lisa", 
+        "mario", "panda", "party", "pbj", "pixelmj", 
+        "pony", "rick", "shark", "shroom", "spidey", 
+        "sponge", "weed"
+    ],
+    "phrases": [
+        "G stands for Graphics.",
+        "Go look at the kitties!",
+        "Woof!",
+        "Hi!",
+        "Thanks to gifs, we live in the golden age of silent movies.",
+        "Remember when Obama had midnight tweet storms?",
+        "How do you kill a blonde? <br> You put a scratch and sniff at the bottom of a pool.",
+        "Why didn't the photon need help with its luggage? <br> It was travelling light.",
+        "What is weird, but a normality to the abnormal?",
+        "A friend with weed is a friend indeed.",
+        "The average human spends 3 hours a day watching cat videos. And cats could not care less.",
+        "What's orange and behind bars? <br> An orange in a fruit basket.",
+        "If you're asking yourself 'Is the earth flat?' <br> Good job! You're an idiot.",
+        "1/4 Americans believe chocolate milk comes from brown cows. <br> 1/4 Americans are dumb as shit."
+    ]
+}
