@@ -9,7 +9,9 @@
   {{#each gifs}}
   <div class="gif-result animate">
     <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
-    <img class="gif-image animate static" src="{{this.images.fixed_height_still.url}}">
+    <div class="gif-image animate static">
+      <img src="{{this.images.fixed_height_still.url}}">
+    </div>
     <div class="gif-hover animate">
       <img class="gif-hover-bg top" src="images/bgfade.png">
       <img class="gif-hover-bg" src="images/bgfade.png">
@@ -22,6 +24,4 @@
   {{/each}}
 </div>
 
-<script src="scripts/results.js"></script>
-
-{{>focused}}
+<script src="scripts/results.js"></script> {{>focused}}
