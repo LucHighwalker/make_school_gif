@@ -1,4 +1,4 @@
-var findIndex = function (array, obj) {
+const findIndex = function (array, obj) {
     var index = -1;
     for (var i = 0; i < array.length; i++) {
         if (array[i].id === obj.id) {
@@ -9,7 +9,7 @@ var findIndex = function (array, obj) {
     return index;
 }
 
-var focusGif = function (gifID) {
+const focusGif = function (gifID) {
     var curURL = window.location.href;
     var joinSymbol = '?';
 
@@ -21,7 +21,7 @@ var focusGif = function (gifID) {
     window.location.reload();
 }
 
-var changePage = function (curPage, mod) {
+const changePage = function (curPage, mod) {
     var curURL = window.location.href;
     var newURL = '';
     var pageParam = $.param({ page: null });
@@ -45,10 +45,10 @@ var changePage = function (curPage, mod) {
     }
 }
 
-var prevPage = function (curPage) {
+const prevPage = function (curPage) {
     changePage(curPage, -1);
 }
 
-var nextPage = function (curPage) {
+const nextPage = function (curPage) {
     changePage(curPage, 1);
 }

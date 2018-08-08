@@ -2,7 +2,7 @@ window.addEventListener('popstate', () => {
     window.location.reload();
 }, false);
 
-var toggleFavorite = function (gif) {
+const toggleFavorite = function (gif) {
     var docRef = firestore.collection('users').doc('testuser');
 
     docRef.get().then((doc) => {

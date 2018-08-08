@@ -1,6 +1,6 @@
 var unfocusing = false;
 
-var unfocusGif = function (gifID) {
+const unfocusGif = function (gifID) {
     if (unfocusing === false) {
         unfocusing = true;
         var curURL = window.location.href;
