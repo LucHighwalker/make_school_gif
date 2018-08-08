@@ -7,6 +7,65 @@ var giphy = require('giphy-api')();
 var catJSON = require(__dirname + '/public/JSON/categories.json');
 var categories = JSON.parse(JSON.stringify(catJSON));
 
+const home = 'home';
+const favs = 'favorites';
+const search = 'search';
+const monthNames = [
+    'January ', 'February ', 'March ',
+    'April ', 'May ', 'June ', 'July ',
+    'August ', 'September ', 'October ',
+    'November ', 'December '
+];
+
+var curPage = {
+    page: null,
+    focused: null
+}
+var lastPage = {
+    page: null,
+    focused: null
+}
+
+const updateCurPage = function (page, focused) {
+    curPage.page = page;
+    curPage.focused = focused !== null ? true : false;
+}
+
+const updateLastPage = function (page, focused) {
+    lastPage.page = page;
+    lastPage.focused = focused !== null ? true : false;
+}
+
+const getAnimState = function (key) {
+    switch (key) {
+        case 'nav':
+            if (curPage.page === home && lastPage.page === home) {
+                return 'hidden';
+            } else if (curPage.page === home && lastPage.page !== home) {
+                return 'hide';
+            } else if (curPage.page !== home && lastPage.page === home) {
+                return 'show';
+            } else if (curPage.page !== home && lastPage.page !== home) {
+                return 'shown';
+            } else {
+                console.error('error getting nav anim state going from page (' + 
+                lastPage.page + ') to page (' + curPage.page + ')');
+                return 'error';
+            }
+
+            case 'home':
+                if (curPage.page === home && lastPage.page === home) {
+                    return 'shown';
+                } else {
+                    return 'show';
+                }
+    
+        default:
+            console.error('invalid key getting anim state.');
+            return 'error';
+    }
+}
+
 var firebase = require('firebase');
 
 var config = {
@@ -25,7 +84,7 @@ firestore.settings(storeSettings);
 
 var favorites = [];
 var favIDs = [];
-var updateFavs = function () {
+const updateFavs = function () {
     return new Promise((resolve, reject) => {
         favorites = [];
         favIDs = [];
@@ -46,7 +105,7 @@ var updateFavs = function () {
 }
 
 // Possible to move to client?
-var getFocused = function (gifs, focused) {
+const getFocused = function (gifs, focused) {
     var focusedGif = null;
     for (var i = 0; i < gifs.length; i++) {
         if (focused === gifs[i].id) {
@@ -71,13 +130,6 @@ app.engine('hbs', exphbs({
         },
         formatDate: function (dateString) {
             if (dateString !== undefined) {
-                var monthNames = [
-                    'January ', 'February ', 'March ',
-                    'April ', 'May ', 'June ', 'July ',
-                    'August ', 'September ', 'October ',
-                    'November ', 'December '
-                ];
-
                 var date = new Date(dateString);
                 var month = date.getMonth();
                 var day = date.getDate();
@@ -137,10 +189,13 @@ app.listen(4200, function () {
 });
 
 app.get('/', function (req, res) {
+    updateCurPage(home, null);
     res.render('home', {
-        navSearch: false,
-        catList: categories
+        catList: categories,
+        navAnimState: getAnimState('nav'),
+        homeAnimState: getAnimState('home')
     });
+    updateLastPage(home, null);
 });
 
 app.get('/favorites', function (req, res) {
@@ -149,15 +204,17 @@ app.get('/favorites', function (req, res) {
         var focusID = req.query.focus ? req.query.focus : null;
         var focused = focusID ? getFocused(favorites, focusID) : null;
 
+        updateCurPage(favs, focused);
         res.render('result', {
             gifs: favorites,
             favIDs: favIDs,
             focused: focused,
             curPage: page,
             reloadChange: true,
-            navSearch: true,
-            catList: categories
+            catList: categories,
+            navAnimState: getAnimState('nav')
         });
+        updateLastPage(favs, focused);
     }).catch((error) => {
         console.error(error);
     });
@@ -177,15 +234,17 @@ app.get('/search', function (req, res) {
             var gifs = response.data;
             var focused = focusID ? getFocused(gifs, focusID) : null;
 
+            updateCurPage(search, focused);
             res.render('result', {
                 gifs: gifs,
                 favIDs: favIDs,
                 focused: focused,
                 curPage: page,
                 reloadChange: false,
-                navSearch: true,
-                catList: categories
+                catList: categories,
+                navAnimState: getAnimState('nav')
             });
+            updateLastPage(search, focused);
 
             if (error !== null) {
                 console.error(error);

@@ -13,9 +13,6 @@
     border: 3px solid $dark-grey;
     border-radius: 5px;
     box-shadow: 6px 6px 10px $dark-grey;
-    -moz-animation: bounceInDown 1s ease-in;
-    -webkit-animation: bounceInDown 1s ease-in;
-    animation: bounceInDown 1s ease-in;
     .home-search {
         position: relative;
         display: block;
@@ -25,4 +22,9 @@
         left: 0;
         margin: 50px auto;
     }
+}
+.home-box.show {
+    -moz-animation: bounceInDown 1s ease-in;
+    -webkit-animation: bounceInDown 1s ease-in;
+    animation: bounceInDown 1s ease-in;
 }

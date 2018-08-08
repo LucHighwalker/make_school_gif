@@ -107,10 +107,21 @@ nav {
     .nav-search {
         width: 500px;
         margin-left: calc(100% - 600px);
-        
+        transform: scale(1, 1);
+    }
+    .nav-search.show {
         -moz-animation: bounceInRight 1s ease-in;
         -webkit-animation: bounceInRight 1s ease-in;
         animation: bounceInRight 1s ease-in;
+    }
+    .nav-search.hide {
+        -moz-animation: bounceOutRight 1s ease;
+        -webkit-animation: bounceOutRight 1s ease;
+        animation: bounceOutRight 1s ease;
+        transform: scale(0, 0);
+    }
+    .nav-search.hidden {
+        display: none;
     }
 }
 
