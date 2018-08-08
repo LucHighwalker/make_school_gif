@@ -1,19 +1,30 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var exphbs = require('express-handlebars');
-var giphy = require('giphy-api')();
+const exphbs = require('express-handlebars');
+const giphy = require('giphy-api')();
 
 const catJSON = require(__dirname + '/public/JSON/categories.json');
-const categories = JSON.parse(JSON.stringify(catJSON));
-
 const phrasesJSON = require(__dirname + '/public/JSON/phrases.json');
+
+const categories = JSON.parse(JSON.stringify(catJSON));
 const phrases = JSON.parse(JSON.stringify(phrasesJSON));
 
-const getRandPhrase = function () {
-    var rand = Math.floor(Math.random() * phrases.length);
-    return phrases[rand]; 
-}
+const firebase = require('firebase');
+
+const fireconfig = {
+    apiKey: "AIzaSyAKnz2r0PBnstYUZSMvNUtJ3JP3ZqpLytw",
+    authDomain: "notjif.firebaseapp.com",
+    databaseURL: "https://notjif.firebaseio.com",
+    projectId: "notjif",
+    storageBucket: "notjif.appspot.com",
+    messagingSenderId: "390698485567"
+};
+firebase.initializeApp(fireconfig);
+
+const firestore = firebase.firestore();
+const storeSettings = { timestampsInSnapshots: true };
+firestore.settings(storeSettings);
 
 const home = 'home';
 const favs = 'favorites';
@@ -27,11 +38,50 @@ const monthNames = [
 
 var curPage = {
     page: null,
-    focused: null
+    focused: false
 }
 var lastPage = {
     page: null,
-    focused: null
+    focused: false
+}
+
+var favorites = [];
+var favIDs = [];
+
+const updateFavs = function () {
+    return new Promise((resolve, reject) => {
+        favorites = [];
+        favIDs = [];
+        var docRef = firestore.collection('users').doc('testuser');
+
+        docRef.get().then((doc) => {
+            var data = doc.data();
+            favorites = data.favorites;
+            for (var i = 0; i < favorites.length; i++) {
+                favIDs.push(favorites[i].id);
+            }
+            resolve('success');
+        }).catch((error) => {
+            console.error('error loading favorites: ');
+            reject(error)
+        });
+    });
+}
+
+const getFocused = function (gifs, focused) {
+    var focusedGif = null;
+    for (var i = 0; i < gifs.length; i++) {
+        if (focused === gifs[i].id) {
+            focusedGif = gifs[i];
+            break;
+        }
+    }
+    return focusedGif;
+}
+
+const getRandPhrase = function () {
+    var rand = Math.floor(Math.random() * phrases.length);
+    return phrases[rand];
 }
 
 const updateCurPage = function (page, focused) {
@@ -68,7 +118,7 @@ const getAnimState = function (key) {
                 return 'show';
             }
 
-        case 'focus': 
+        case 'focus':
             if (curPage.focused === true && lastPage.focused === true) {
                 return 'shown';
             } else if (curPage.focused === true && lastPage.focused === false) {
@@ -87,56 +137,6 @@ const getAnimState = function (key) {
             console.error('invalid key getting anim state.');
             return 'error';
     }
-}
-
-var firebase = require('firebase');
-
-var config = {
-    apiKey: "AIzaSyAKnz2r0PBnstYUZSMvNUtJ3JP3ZqpLytw",
-    authDomain: "notjif.firebaseapp.com",
-    databaseURL: "https://notjif.firebaseio.com",
-    projectId: "notjif",
-    storageBucket: "notjif.appspot.com",
-    messagingSenderId: "390698485567"
-};
-firebase.initializeApp(config);
-
-var firestore = firebase.firestore();
-var storeSettings = { timestampsInSnapshots: true };
-firestore.settings(storeSettings);
-
-var favorites = [];
-var favIDs = [];
-const updateFavs = function () {
-    return new Promise((resolve, reject) => {
-        favorites = [];
-        favIDs = [];
-        var docRef = firestore.collection('users').doc('testuser');
-
-        docRef.get().then((doc) => {
-            var data = doc.data();
-            favorites = data.favorites;
-            for (var i = 0; i < favorites.length; i++) {
-                favIDs.push(favorites[i].id);
-            }
-            resolve('success');
-        }).catch((error) => {
-            console.error('error loading favorites: ');
-            reject(error)
-        });
-    });
-}
-
-// Possible to move to client?
-const getFocused = function (gifs, focused) {
-    var focusedGif = null;
-    for (var i = 0; i < gifs.length; i++) {
-        if (focused === gifs[i].id) {
-            focusedGif = gifs[i];
-            break;
-        }
-    }
-    return focusedGif;
 }
 
 app.engine('hbs', exphbs({
@@ -234,7 +234,6 @@ app.get('/favorites', function (req, res) {
             favIDs: favIDs,
             focused: focused,
             curPage: page,
-            reloadChange: true,
             catList: categories,
             navAnimState: getAnimState('nav'),
             focusAnimState: getAnimState('focus')
@@ -265,7 +264,6 @@ app.get('/search', function (req, res) {
                 favIDs: favIDs,
                 focused: focused,
                 curPage: page,
-                reloadChange: false,
                 catList: categories,
                 navAnimState: getAnimState('nav'),
                 focusAnimState: getAnimState('focus')
