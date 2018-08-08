@@ -1,4 +1,4 @@
-<script src="scripts/partials/focused.js"></script> {{#if focused}}
+{{#if focused}}
 <button class="focus-off-click" onclick="unfocusGif('{{focused.id}}')"></button>
 <div class="focused col-sm-12 col-md-10 col-lg-9 col-xl-8">
   <h1 class="focused-title">{{focused.title}}</h1>
@@ -22,9 +22,11 @@
       <i class="material-icons animate">save_alt</i>
     </a>
     <div class="fb-share-button" data-href="{{focused.images.original.url}}" data-layout="button" data-size="large" data-mobile-iframe="true">
-      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fgoogle.com%2F&amp;src=sdkpreparse"
+      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffacebook.com%2F&amp;src=sdkpreparse"
         class="fb-xfbml-parse-ignore">Share</a>
     </div>
   </div>
 </div>
 {{/if}}
+
+<script src="scripts/partials/focused.js"></script> 
