@@ -9,21 +9,164 @@
 @import "partials/focused";
 @import "partials/navbar";
 @import "partials/search";
-body {
-    background-color: $highlight;
-}
-
-html {
-    background-color: $highlight;
-}
 
 a {
     color: white;
 }
 
 a:hover {
-    color: $highlight;
     text-decoration: none;
+}
+
+.hl0 {
+    .bg {
+        background-color: $hl0;
+    }
+    .clr {
+        color: $hl0;
+    }
+    .btn {
+        color: $hl0;
+        border-color: $hl0;
+    }
+    .hvr:hover{
+        color: $hl0;
+    }
+}
+.hl1 {
+    .bg {
+        background-color: $hl1;
+    }
+    .clr {
+        color: $hl1;
+    }
+    .btn {
+        color: $hl1;
+        border-color: $hl1;
+    }
+    .hvr:hover{
+        color: $hl1;
+    }
+}
+.hl2 {
+    .bg {
+        background-color: $hl2;
+    }
+    .clr {
+        color: $hl2;
+    }
+    .btn {
+        color: $hl2;
+        border-color: $hl2;
+    }
+    .hvr:hover{
+        color: $hl2;
+    }
+}
+.hl3 {
+    .bg {
+        background-color: $hl3;
+    }
+    .clr {
+        color: $hl3;
+    }
+    .btn {
+        color: $hl3;
+        border-color: $hl3;
+    }
+    .hvr:hover{
+        color: $hl3;
+    }
+}
+.hl4 {
+    .bg {
+        background-color: $hl4;
+    }
+    .clr {
+        color: $hl4;
+    }
+    .btn {
+        color: $hl4;
+        border-color: $hl4;
+    }
+    .hvr:hover{
+        color: $hl4;
+    }
+}
+.hl5 {
+    .bg {
+        background-color: $hl5;
+    }
+    .clr {
+        color: $hl5;
+    }
+    .btn {
+        color: $hl5;
+        border-color: $hl5;
+    }
+    .hvr:hover{
+        color: $hl5;
+    }
+}
+.hl6 {
+    .bg {
+        background-color: $hl6;
+    }
+    .clr {
+        color: $hl6;
+    }
+    .btn {
+        color: $hl6;
+        border-color: $hl6;
+    }
+    .hvr:hover{
+        color: $hl6;
+    }
+}
+.hl7 {
+    .bg {
+        background-color: $hl7;
+    }
+    .clr {
+        color: $hl7;
+    }
+    .btn {
+        color: $hl7;
+        border-color: $hl7;
+    }
+    .hvr:hover{
+        color: $hl7;
+    }
+}
+.hl8 {
+    .bg {
+        background-color: $hl8;
+    }
+    .clr {
+        color: $hl8;
+    }
+    .btn {
+        color: $hl8;
+        border-color: $hl8;
+    }
+    .hvr:hover{
+        color: $hl8;
+    }
+}
+.hl9 {
+    .bg {
+        background-color: $hl9;
+    }
+    .clr {
+        color: $hl9;
+    }
+    .btn {
+        color: $hl9;
+        border-color: $hl9;
+    }
+    .hvr:hover{
+        color: $hl9;
+    }
 }
 
 .container {

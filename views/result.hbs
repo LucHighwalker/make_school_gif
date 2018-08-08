@@ -15,7 +15,7 @@
     <div class="gif-hover animate">
       <img class="gif-hover-bg top" src="images/bgfade.png">
       <img class="gif-hover-bg" src="images/bgfade.png">
-      <div class="gif-title{{scrollTitle this}} animate" onclick="focusGif('{{this.id}}')">
+      <div class="gif-title{{scrollTitle this}} hl{{highlight}} hvr animate" onclick="focusGif('{{this.id}}')">
         <h3>{{stringify this.title}}</h3>
       </div>
       <i class="material-icons gif-favorite{{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>

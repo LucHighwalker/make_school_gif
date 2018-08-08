@@ -42,6 +42,8 @@ var lastPage = {
     focused: false
 }
 
+var highlight = 0;
+
 var favorites = [];
 var favIDs = [];
 
@@ -222,8 +224,13 @@ app.listen(4200, function () {
 
 app.get('/', function (req, res) {
     updateCurPage(home, null);
+
+    highlight = Math.floor(Math.random() * 9);
+    console.log(highlight);
+
     res.render('home', {
         catList: categories,
+        highlight: highlight,
         randDance: getRand(dances),
         randPhrase: getRand(phrases),
         navAnimState: getAnimState('nav'),
@@ -245,6 +252,7 @@ app.get('/favorites', function (req, res) {
             focused: focused,
             curPage: page,
             catList: categories,
+            highlight: highlight,
             navAnimState: getAnimState('nav'),
             focusAnimState: getAnimState('focus')
         });
@@ -275,6 +283,7 @@ app.get('/search', function (req, res) {
                 focused: focused,
                 curPage: page,
                 catList: categories,
+                highlight: highlight,
                 navAnimState: getAnimState('nav'),
                 focusAnimState: getAnimState('focus')
             });

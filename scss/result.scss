@@ -257,9 +257,6 @@
                 animation: title-scroll 7s linear infinite;
             }
         }
-        .gif-title:hover {
-            color: $highlight;
-        }
         .gif-favorite:hover {
             color: $yellow;
             -moz-animation: rubberBand 1s ease;
