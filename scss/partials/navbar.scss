@@ -8,15 +8,38 @@ nav {
         margin: 0;
         padding: 0;
         left: -10px;
+        .highlight-bg {
+            position: absolute;
+            z-index: 0;
+            top: 2px;
+            right: 2px;
+            height: 33px;
+            width: 120px;
+        }
+        .white-bg {
+            position: absolute;
+            z-index: 10;
+            top: 2px;
+            right: 2px;
+            height: 33px;
+            width: 120px;
+            background-color: white;
+            opacity: 1;
+        }
         img {
-            height: 45px;
-            width: 145px;
+            position: relative;
+            z-index: 20;
+            height: 37px;
+            width: 125px;
         }
     }
     .navbar-brand:hover {
-        -moz-animation: jello 2s ease;
-        -webkit-animation: jello 2s ease;
-        animation: jello 2s ease;
+        -moz-animation: rubberBand 1s ease;
+        -webkit-animation: rubberBand 1s ease;
+        animation: rubberBand 1s ease;
+        .white-bg {
+            opacity: 0;
+        }
     }
     .header-top {
         box-shadow: 0 3px 5px $dark-grey;
