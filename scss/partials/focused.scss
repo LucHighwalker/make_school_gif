@@ -100,6 +100,10 @@
             -webkit-animation: rubberBandLarge 1s ease;
             animation: rubberBandLarge 1s ease;
         }
+        .fb-share-button {
+            margin: 10px;
+            transform: scale(1.1, 1.1);
+        }
         .gif-favorite.favorited {
             color: $yellow;
             transform: scale(1.8, 1.8);
