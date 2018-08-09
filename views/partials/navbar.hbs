@@ -31,14 +31,14 @@
                             </li>
                             {{else}}
                             <li>
-                                <a href="/search?term={{this}}&page=0">{{this}}</a>
+                                <a class="hl{{highlight}} hvr" href="/search?term={{this}}&page=0">{{this}}</a>
                             </li>
                             {{/if}} {{/each}}
                         </ul>
                     </li>
                     {{else}}
                     <li>
-                        <a href="/search?term={{this}}&page=0">{{this}}</a>
+                        <a class="hl{{highlight}} hvr" href="/search?term={{this}}&page=0">{{this}}</a>
                     </li>
                     {{/if}} {{/each}}
                 </ul>

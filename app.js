@@ -154,9 +154,9 @@ app.engine('hbs', exphbs({
 
                 case 'msgid':
                     return fireconfig.messagingSenderId;
-            
+
                 default:
-                   return 'error';
+                    return 'error';
             }
         },
         stringify: function (val) {
@@ -226,7 +226,6 @@ app.get('/', function (req, res) {
     updateCurPage(home, null);
 
     highlight = Math.floor(Math.random() * 9);
-    console.log(highlight);
 
     res.render('home', {
         catList: categories,
@@ -264,35 +263,51 @@ app.get('/favorites', function (req, res) {
 
 app.get('/search', function (req, res) {
     updateFavs().then(() => {
-        var input = req.query.term ? req.query.term : ' ';
+        var input = req.query.term ? req.query.term : null;
         var page = req.query.page ? req.query.page : 0;
         var focusID = req.query.focus ? req.query.focus : null;
 
-        giphy.search({
-            q: input,
-            limit: 25,
-            offset: page * 25
-        }, function (error, response) {
-            var gifs = response.data;
-            var focused = focusID ? getFocused(gifs, focusID) : null;
+        if (input !== null) {
+            giphy.search({
+                q: input,
+                limit: 25,
+                offset: page * 25
+            }, function (error, response) {
+                var gifs = response.data;
+                var focused = focusID ? getFocused(gifs, focusID) : null;
 
-            updateCurPage(search, focused);
-            res.render('result', {
-                gifs: gifs,
-                favIDs: favIDs,
-                focused: focused,
-                curPage: page,
+                updateCurPage(search, focused);
+                res.render('result', {
+                    gifs: gifs,
+                    favIDs: favIDs,
+                    focused: focused,
+                    curPage: page,
+                    catList: categories,
+                    highlight: highlight,
+                    navAnimState: getAnimState('nav'),
+                    focusAnimState: getAnimState('focus')
+                });
+                updateLastPage(search, focused);
+
+                if (error !== null) {
+                    console.error(error);
+                }
+            });
+        } else {
+            updateCurPage(home, null);
+
+            highlight = Math.floor(Math.random() * 9);
+
+            res.render('home', {
                 catList: categories,
                 highlight: highlight,
+                randDance: getRand(dances),
+                randPhrase: getRand(phrases),
                 navAnimState: getAnimState('nav'),
-                focusAnimState: getAnimState('focus')
+                homeAnimState: getAnimState('home')
             });
-            updateLastPage(search, focused);
-
-            if (error !== null) {
-                console.error(error);
-            }
-        });
+            updateLastPage(home, null);
+        }
     }).catch((error) => {
         console.error(error);
     });
