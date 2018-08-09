@@ -30,4 +30,12 @@
   {{/each}}
 </div>
 
-<script src="scripts/results.js"></script> {{>focused}}
+<div class="image-loader">
+  {{#each nextPageGifs}}
+    <img src="{{this.images.fixed_height_still.url}}">
+  {{/each}}
+</div>
+
+<script src="scripts/results.js"></script>
+
+{{>focused}}
