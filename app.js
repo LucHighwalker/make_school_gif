@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const giphy = require('giphy-api')();
 
 const maxGifs = 20;
+const highlights = 14;
 
 const home = 'home';
 const favs = 'favorites';
@@ -261,7 +262,7 @@ app.listen(4200, function () {
 const renderHome = function (res) {
     updateCurPage(home, null);
 
-    highlight = Math.floor(Math.random() * 9);
+    highlight = Math.floor(Math.random() * highlights);
 
     res.render('home', {
         catList: categories,

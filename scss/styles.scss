@@ -208,6 +208,101 @@ a:hover {
     }
 }
 
+.hl10 {
+    .bg {
+        background-color: $hl10;
+    }
+    .clr {
+        color: $hl10;
+    }
+    .btn {
+        color: $hl10;
+        border-color: $hl10;
+    }
+    .hvr:hover {
+        color: $hl10;
+    }
+    .fcs:focus {
+        border-color: $hl10;
+    }
+}
+
+.hl11 {
+    .bg {
+        background-color: $hl11;
+    }
+    .clr {
+        color: $hl11;
+    }
+    .btn {
+        color: $hl11;
+        border-color: $hl11;
+    }
+    .hvr:hover {
+        color: $hl11;
+    }
+    .fcs:focus {
+        border-color: $hl11;
+    }
+}
+
+.hl12 {
+    .bg {
+        background-color: $hl12;
+    }
+    .clr {
+        color: $hl12;
+    }
+    .btn {
+        color: $hl12;
+        border-color: $hl12;
+    }
+    .hvr:hover {
+        color: $hl12;
+    }
+    .fcs:focus {
+        border-color: $hl12;
+    }
+}
+
+.hl13 {
+    .bg {
+        background-color: $hl13;
+    }
+    .clr {
+        color: $hl13;
+    }
+    .btn {
+        color: $hl13;
+        border-color: $hl13;
+    }
+    .hvr:hover {
+        color: $hl13;
+    }
+    .fcs:focus {
+        border-color: $hl13;
+    }
+}
+
+.hl14 {
+    .bg {
+        background-color: $hl14;
+    }
+    .clr {
+        color: $hl14;
+    }
+    .btn {
+        color: $hl14;
+        border-color: $hl14;
+    }
+    .hvr:hover {
+        color: $hl14;
+    }
+    .fcs:focus {
+        border-color: $hl14;
+    }
+}
+
 .disabled {
     transform: scale(1, 1);
     opacity: 0.25;
