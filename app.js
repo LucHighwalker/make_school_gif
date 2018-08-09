@@ -190,7 +190,7 @@ app.engine('hbs', exphbs({
             }
         },
         stringify: function (val) {
-            return val ? val : 'N/A';
+            return val ? val.replace(' GIF', '') : 'N/A';
         },
         formatDate: function (dateString) {
             if (dateString !== undefined) {
