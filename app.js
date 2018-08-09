@@ -4,6 +4,8 @@ const app = express();
 const exphbs = require('express-handlebars');
 const giphy = require('giphy-api')();
 
+const maxGifs = 25;
+
 const home = 'home';
 const favs = 'favorites';
 const search = 'search';
@@ -65,6 +67,21 @@ const updateFavs = function () {
             reject(error)
         });
     });
+}
+
+const serveFavs = function (page) {
+    var served = [];
+    var offset = page * maxGifs;
+
+    for (var i = offset; i < offset + maxGifs; i++) {
+        if (favorites[i] !== undefined) {
+            served.push(favorites[i]);
+        } else {
+            break;
+        }
+    }
+
+    return served;
 }
 
 const getFocused = function (gifs, focused) {
@@ -246,7 +263,7 @@ app.get('/favorites', function (req, res) {
 
         updateCurPage(favs, focused);
         res.render('result', {
-            gifs: favorites,
+            gifs: serveFavs(page),
             favIDs: favIDs,
             focused: focused,
             curPage: page,
@@ -270,8 +287,8 @@ app.get('/search', function (req, res) {
         if (input !== null) {
             giphy.search({
                 q: input,
-                limit: 25,
-                offset: page * 25
+                limit: maxGifs,
+                offset: page * maxGifs
             }, function (error, response) {
                 var gifs = response.data;
                 var focused = focusID ? getFocused(gifs, focusID) : null;
