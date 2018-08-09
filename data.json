@@ -12,11 +12,10 @@
         }
     ],
     "dances": [
-        "anime", "anime2", "carl", "char", "dumbfuck", 
-        "dumbfuck1", "dumbfuck2", "link", "lisa", 
-        "mario", "panda", "party", "pbj", "pixelmj", 
-        "pony", "rick", "shark", "shroom", "spidey", 
-        "sponge", "weed"
+        "anime", "anime1", "carl", "char", "dumbfuck", 
+        "dumbfuck1", "link", "lisa", "mario", "panda", 
+        "party", "pbj", "pixelmj", "pony", "rick", 
+        "shark", "shroom", "spidey", "sponge", "weed"
     ],
     "phrases": [
         "G stands for Graphics.",

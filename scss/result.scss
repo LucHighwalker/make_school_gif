@@ -187,6 +187,7 @@
             color: white;
             overflow: hidden;
             cursor: pointer;
+            transform: scale(1, 1);
             h3 {
                 display: none;
                 text-shadow: 2px 2px black;
@@ -249,6 +250,10 @@
                 -webkit-transform: translateX(0);
                 transform: translateX(0);
             }
+        }
+        .gif-title:hover {
+            margin-bottom: 220px;
+            transform: scale(1.1, 1.1);
         }
         .gif-title.scroll {
             h3 {
