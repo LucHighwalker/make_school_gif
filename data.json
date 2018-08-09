@@ -12,10 +12,13 @@
         }
     ],
     "dances": [
-        "anime", "anime1", "carl", "char", "dumbfuck", 
-        "dumbfuck1", "link", "lisa", "mario", "panda", 
-        "party", "pbj", "pixelmj", "pony", "rick", 
-        "shark", "shroom", "spidey", "sponge", "weed"
+        "anime", "anime1", "bird", "brace", "bunnies", "bunnies1", "carl", "cat",
+        "char", "devil", "dumbfuck", "dumbfuck1", "einstein", "flower", "gay",
+        "girl", "girl1", "girl2", "guy", "liberty", "link", "lisa", "mario", "neil", 
+        "nerd", "nun", "panda", "party", "pbj", "pixelmj", "pizza", "podium", "pony",
+        "rick", "shark", "shinji", "shroom", "skel", "sketch", "snoop", "sonic", 
+        "spidey", "spin", "sponge", "sponge1", "sway", "sweets", "swing", "weed",
+        "weird", "wow", "yoddle"
     ],
     "phrases": [
         "G stands for Graphics.",
