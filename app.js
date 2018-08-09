@@ -228,7 +228,7 @@ app.engine('hbs', exphbs({
             }
         },
         scrollTitle: function (gif) {
-            var title = gif.title;
+            var title = gif.title.replace(' GIF', '');
             var width = gif.images.fixed_height.width;
 
             return (title.length > (width / 10) + 2) ? ' scroll' : '';
