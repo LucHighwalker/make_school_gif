@@ -95,6 +95,19 @@ const getFocused = function (gifs, focused) {
     return focusedGif;
 }
 
+const canGo = function (page, favs = false) {
+    var navi = {
+        forward: page < 199 ? true : false,
+        back: page > 0 ? true : false
+    }
+
+    if (favs) {
+        navi.forward = favorites.length > page * maxGifs + maxGifs;
+    }
+
+    return navi;
+}
+
 const getRand = function (array) {
     var rand = Math.floor(Math.random() * array.length);
     return array[rand];
@@ -220,6 +233,9 @@ app.engine('hbs', exphbs({
 
             return (title.length > (width / 10) + 2) ? ' scroll' : '';
         },
+        disabled: function (bool) {
+            return bool ? '' : ' disabled';
+        },
         favorited: function (gifID) {
             var favorite = false;
             for (var i = 0; i < favIDs.length; i++) {
@@ -267,6 +283,7 @@ app.get('/favorites', function (req, res) {
             favIDs: favIDs,
             focused: focused,
             curPage: page,
+            navigation: canGo(page, true),
             catList: categories,
             highlight: highlight,
             navAnimState: getAnimState('nav'),
@@ -299,6 +316,7 @@ app.get('/search', function (req, res) {
                     favIDs: favIDs,
                     focused: focused,
                     curPage: page,
+                    navigation: canGo(page),
                     catList: categories,
                     highlight: highlight,
                     navAnimState: getAnimState('nav'),

@@ -9,7 +9,6 @@
 @import "partials/focused";
 @import "partials/navbar";
 @import "partials/search";
-
 a {
     color: white;
 }
@@ -29,13 +28,14 @@ a:hover {
         color: $hl0;
         border-color: $hl0;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl0;
     }
     .fcs:focus {
         border-color: $hl0;
     }
 }
+
 .hl1 {
     .bg {
         background-color: $hl1;
@@ -47,13 +47,14 @@ a:hover {
         color: $hl1;
         border-color: $hl1;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl1;
     }
     .fcs:focus {
         border-color: $hl1;
     }
 }
+
 .hl2 {
     .bg {
         background-color: $hl2;
@@ -65,13 +66,14 @@ a:hover {
         color: $hl2;
         border-color: $hl2;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl2;
     }
     .fcs:focus {
         border-color: $hl2;
     }
 }
+
 .hl3 {
     .bg {
         background-color: $hl3;
@@ -83,13 +85,14 @@ a:hover {
         color: $hl3;
         border-color: $hl3;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl3;
     }
     .fcs:focus {
         border-color: $hl3;
     }
 }
+
 .hl4 {
     .bg {
         background-color: $hl4;
@@ -101,13 +104,14 @@ a:hover {
         color: $hl4;
         border-color: $hl4;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl4;
     }
     .fcs:focus {
         border-color: $hl4;
     }
 }
+
 .hl5 {
     .bg {
         background-color: $hl5;
@@ -119,13 +123,14 @@ a:hover {
         color: $hl5;
         border-color: $hl5;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl5;
     }
     .fcs:focus {
         border-color: $hl5;
     }
 }
+
 .hl6 {
     .bg {
         background-color: $hl6;
@@ -137,13 +142,14 @@ a:hover {
         color: $hl6;
         border-color: $hl6;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl6;
     }
     .fcs:focus {
         border-color: $hl6;
     }
 }
+
 .hl7 {
     .bg {
         background-color: $hl7;
@@ -155,13 +161,14 @@ a:hover {
         color: $hl7;
         border-color: $hl7;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl7;
     }
     .fcs:focus {
         border-color: $hl7;
     }
 }
+
 .hl8 {
     .bg {
         background-color: $hl8;
@@ -173,13 +180,14 @@ a:hover {
         color: $hl8;
         border-color: $hl8;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl8;
     }
     .fcs:focus {
         border-color: $hl8;
     }
 }
+
 .hl9 {
     .bg {
         background-color: $hl9;
@@ -191,12 +199,18 @@ a:hover {
         color: $hl9;
         border-color: $hl9;
     }
-    .hvr:hover{
+    .hvr:hover {
         color: $hl9;
     }
     .fcs:focus {
         border-color: $hl9;
     }
+}
+
+.disabled {
+    transform: scale(1, 1);
+    opacity: 0.25;
+    pointer-events: none;
 }
 
 .container {

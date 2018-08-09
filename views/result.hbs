@@ -1,7 +1,7 @@
-<button class="page-btn prev animate" onclick="prevPage({{curPage}})">
+<button class="page-btn prev animate{{disabled navigation.back}}" onclick="prevPage({{curPage}})">
   <i class="material-icons animate">chevron_left</i>
 </button>
-<button class="page-btn next animate" onclick="nextPage({{curPage}})">
+<button class="page-btn next animate{{disabled navigation.forward}}" onclick="nextPage({{curPage}})">
   <i class="material-icons animate">chevron_right</i>
 </button>
 
