@@ -1,7 +1,8 @@
 <script>
-  var curPage = {{curPage}};
-  var nextPageAvail = {{navigation.forward}};
-  var prevPageAvail = {{navigation.back}};
+  const curPage = {{curPage}};
+  const nextPageAvail = {{navigation.forward}};
+  const prevPageAvail = {{navigation.back}};
+  const isFocused = {{isFocused focused}};
 </script>
 
 <button class="page-btn prev animate{{disabled navigation.back}}" onclick="changePage(-1)">

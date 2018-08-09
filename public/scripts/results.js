@@ -9,6 +9,7 @@ var touchDown = null;
 const changePage = function (mod) {
     var curURL = window.location.href;
     var newURL = '';
+
     var pageParam = $.param({ page: null });
     var nextPage = curPage + mod > 0 ? curPage + mod : 0;
 
@@ -50,7 +51,7 @@ function touchStart(event) {
 };
 
 function touchMove(event) {
-    if (!touchDown) {
+    if (!touchDown || isFocused) {
         return;
     }
 

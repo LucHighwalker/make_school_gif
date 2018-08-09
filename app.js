@@ -227,6 +227,9 @@ app.engine('hbs', exphbs({
                 return 'N/A';
             }
         },
+        isFocused: function (gif) {
+            return gif ? true : false;
+        },
         scrollTitle: function (gif) {
             var title = gif.title.replace(' GIF', '');
             var width = gif.images.fixed_height.width;
