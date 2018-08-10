@@ -31,6 +31,7 @@ nav {
             z-index: 20;
             height: 37px;
             width: 125px;
+            pointer-events: none;
         }
     }
     .navbar-brand:hover {
