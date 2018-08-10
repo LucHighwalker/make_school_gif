@@ -24,7 +24,7 @@ nav {
             height: 33px;
             width: 120px;
             background-color: white;
-            opacity: 1;
+            opacity: 0;
         }
         img {
             position: relative;
@@ -38,7 +38,7 @@ nav {
         -webkit-animation: rubberBand 1s ease;
         animation: rubberBand 1s ease;
         .white-bg {
-            opacity: 0;
+            opacity: 1;
         }
     }
     .header-top {
