@@ -25,11 +25,11 @@
       <div class="gif-title{{scrollTitle this}} hl{{highlight}} hvr animate" onclick="focusGif('{{this.id}}')">
         <h3>{{stringify this.title}}</h3>
       </div>
-      <i class="material-icons gif-favorite{{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>
-    <a href="{{this.images.original.url}}" target="_blank">
-      <i class="material-icons animate">aspect_ratio</i>
-    </a>
+      <a href="{{this.images.original.url}}" target="_blank">
+        <i class="material-icons animate">aspect_ratio</i>
+      </a>
     </div>
+    <i class="material-icons gif-favorite{{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>
   </div>
   {{/each}}
 </div>
