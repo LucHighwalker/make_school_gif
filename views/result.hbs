@@ -14,10 +14,9 @@
 
 <div class="container">
   {{#each gifs}}
-  <div class="gif-result animate">
+  <div class="gif-result image-load animate">
     <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
-    <div class="gif-image static animate" style="height: {{this.images.fixed_height.height}}px; width: {{this.images.fixed_height.width}}px;">
-      <img src="images/loading.gif" style="height: 50px; width: auto;">
+    <div class="gif-image static image-load animate" style="height: {{this.images.fixed_height.height}}px; width: {{this.images.fixed_height.width}}px;">
       <img src="{{this.images.fixed_height_small_still.url}}">
     </div>
     <div class="gif-hover animate">
@@ -34,10 +33,7 @@
 
 <div class="image-loader">
   {{#each nextPageGifs}}
-    <img src="{{this.images.fixed_height_small_still.url}}"> 
-  {{/each}}
+  <img src="{{this.images.fixed_height_small_still.url}}"> {{/each}}
 </div>
 
-<script src="scripts/results.js"></script> 
-
-{{>focused}}
+<script src="scripts/results.js"></script> {{>focused}}

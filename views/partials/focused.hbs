@@ -1,8 +1,7 @@
 <button class="focus-off-click {{focusAnimState}}" onclick="unfocusGif('{{focused.id}}')"></button>
 <div class="focused {{focusAnimState}} col-sm-12 col-md-10 col-lg-9 col-xl-8">
   <h1 class="focused-title">{{stringify focused.title}}</h1>
-  <img class="focused-loading" src="images/loading.gif">
-  <img class="focused-image animate" src="{{focused.images.original.url}}">
+  <img class="focused-image image-load animate" src="{{focused.images.original.url}}">
   <ul class="focused-info">
     <li>rating: {{stringify focused.rating}}</li>
     {{#if focused.source_tld}}
