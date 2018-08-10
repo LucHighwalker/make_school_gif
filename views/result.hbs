@@ -29,7 +29,9 @@
         <i class="material-icons animate">aspect_ratio</i>
       </a>
     </div>
-    <i class="material-icons gif-favorite{{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">star</i>
+    <div class="gif-favorite{{favorited this.id}} animate" onclick="toggleFavorite({{json this}})">
+      <i class="material-icons animate">star</i>
+    </div>
   </div>
   {{/each}}
 </div>
