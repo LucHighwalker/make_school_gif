@@ -1,8 +1,8 @@
 <script>
-  const curPage = {{curPage}};
-  const nextPageAvail = {{navigation.forward}};
-  const prevPageAvail = {{navigation.back}};
-  const isFocused = {{isFocused focused}};
+  const curPage = {{ curPage }};
+  const nextPageAvail = {{ navigation.forward }};
+  const prevPageAvail = {{ navigation.back }};
+  const isFocused = {{ isFocused focused }};
 </script>
 
 <button class="page-btn prev animate{{disabled navigation.back}}" onclick="changePage(-1)">
@@ -16,8 +16,9 @@
   {{#each gifs}}
   <div class="gif-result animate">
     <img class="gif-image animate" src="{{this.images.fixed_height.url}}">
-    <div class="gif-image static animate">
-      <img src="{{this.images.fixed_height_still.url}}">
+    <div class="gif-image static animate" style="height: {{this.images.fixed_height.height}}px; width: {{this.images.fixed_height.width}}px;">
+      <img src="images/loading.gif" style="height: 50px; width: auto;">
+      <img src="{{this.images.fixed_height_small_still.url}}">
     </div>
     <div class="gif-hover animate">
       <img class="gif-hover-bg top" src="images/bgfade.png">
@@ -33,10 +34,10 @@
 
 <div class="image-loader">
   {{#each nextPageGifs}}
-    <img src="{{this.images.fixed_height_still.url}}">
+    <img src="{{this.images.fixed_height_small_still.url}}"> 
   {{/each}}
 </div>
 
-<script src="scripts/results.js"></script>
+<script src="scripts/results.js"></script> 
 
 {{>focused}}

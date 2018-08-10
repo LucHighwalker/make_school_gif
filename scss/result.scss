@@ -132,7 +132,7 @@
     background-color: $light-grey;
     box-shadow: 1px 1px 2px $dark-grey;
     overflow: hidden;
-    .gif-image {
+    img.gif-image {
         position: absolute;
         display: block;
         z-index: 0;
@@ -140,6 +140,7 @@
         right: 0;
         bottom: 0;
         left: 0;
+        max-height: 200px;
         margin: auto;
         border-radius: 5px;
         transform: scale(1, 1);
@@ -148,9 +149,22 @@
         position: relative;
         display: block;
         z-index: 10;
+        padding: 50px;
         opacity: 1;
         background-color: $light-grey;
         transform: scale(1, 1);
+        img {
+            position: absolute;
+            display: block;
+            z-index: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            border-radius: 3px;
+            transform: scale(2, 2);
+        }
     }
     .gif-hover {
         display: block;
