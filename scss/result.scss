@@ -212,7 +212,7 @@
                 text-align: center;
             }
         }
-        .gif-favorite {
+        .material-icons {
             position: relative;
             z-index: 20;
             font-size: x-large;
@@ -253,7 +253,7 @@
     }
     .gif-image.static {
         opacity: 0;
-        transform: scale(2.5, 2.5);
+        transform: scale(2.4, 2.4);
     }
     .gif-hover {
         opacity: 1;
@@ -276,11 +276,13 @@
                 animation: title-scroll 7s linear infinite;
             }
         }
-        .gif-favorite:hover {
-            color: $yellow;
+        .material-icons:hover {
             -moz-animation: rubberBand 1s ease;
             -webkit-animation: rubberBand 1s ease;
             animation: rubberBand 1s ease;
+        }
+        .gif-favorite:hover {
+            color: $yellow;
         }
         .gif-info:hover {
             -moz-animation: rubberBand 1s ease;
