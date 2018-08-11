@@ -7,6 +7,8 @@ var focusing = false;
 var touchDown = null;
 
 const changePage = function (mod) {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    
     var curURL = window.location.href;
     var newURL = '';
 

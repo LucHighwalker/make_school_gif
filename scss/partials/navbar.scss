@@ -1,5 +1,6 @@
 nav {
     background-color: $dark-grey;
+    box-shadow: 0 6px 8px $dark-grey;
     .navbar-expand-lg .navbar-nav.side-nav {
         flex-direction: none;
     }
@@ -59,6 +60,7 @@ nav {
         margin-left: 225px;
         font-size: large;
         background-color: $light-grey;
+        box-shadow: 3px 3px 10px $dark-grey;
     }
     .dropdown-submenu {
         position: relative;
