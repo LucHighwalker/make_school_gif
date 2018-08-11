@@ -1,5 +1,6 @@
+{{#if focused}}
 <button class="focus-off-click {{focusAnimState}}" onclick="unfocusGif('{{focused.id}}')"></button>
-<div class="focused {{focusAnimState}} col-sm-12 col-md-10 col-lg-9 col-xl-8">
+<div class="focused {{focusAnimState}} col-md-10 col-lg-9 col-xl-8">
   <h1 class="focused-title hl{{highlight}} clr">{{stringify focused.title}}</h1>
   <img class="focused-image image-load lg animate" src="{{focused.images.original.url}}">
   <ul class="focused-info">
@@ -27,3 +28,4 @@
 </div>
 
 <script src="scripts/partials/focused.js"></script> 
+{{/if}}
