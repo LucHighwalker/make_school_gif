@@ -18,19 +18,6 @@ a:hover {
     text-decoration: none;
 }
 
-.image-load {
-    background-color: $light-grey;
-    background-image: url('../images/loading.gif');
-    background-size: 50px;
-    background-position-x: 50%;
-    background-position-y: 50%;
-    background-repeat: no-repeat;
-}
-
-.image-load.lg {
-    background-size: 100px;
-}
-
 .hl0 {
     .bg {
         background-color: $hl0;
@@ -314,6 +301,19 @@ a:hover {
     .fcs:focus {
         border-color: $hl14;
     }
+}
+
+.image-load {
+    background-color: $light-grey;
+    background-image: url('../images/loading.gif');
+    background-size: 50px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+}
+
+.image-load.lg {
+    background-size: 100px;
 }
 
 .disabled {
