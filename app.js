@@ -96,13 +96,15 @@ const getFocused = function (gifs, focused) {
     return focusedGif;
 }
 
-const canGo = function (page, favs = false) {
+const canGo = function (page, pagination = null) {
     var navi = {
-        forward: page < 199 ? true : false,
+        forward: false,
         back: page > 0 ? true : false
     }
 
-    if (favs) {
+    if (pagination !== null) {
+        navi.forward = pagination.total_count > page * maxGifs + maxGifs;
+    } else {
         navi.forward = favorites.length > page * maxGifs + maxGifs;
     }
 
@@ -167,6 +169,32 @@ const getAnimState = function (key) {
             console.error('invalid key getting anim state.');
             return 'error';
     }
+}
+
+const renderHome = function (res) {
+    updateCurPage(home, null);
+
+    highlight = Math.floor(Math.random() * highlights);
+
+    res.render('home', {
+        catList: categories,
+        highlight: highlight,
+        randDance: getRand(dances),
+        randPhrase: getRand(phrases),
+        navAnimState: getAnimState('nav'),
+        homeAnimState: getAnimState('home')
+    });
+    updateLastPage(home, null);
+}
+
+const renderResults = function (target, res, data) {
+    updateCurPage(target, data.focused);
+
+    data.navAnimState = getAnimState('nav');
+    data.focusAnimState = getAnimState('focus');
+    res.render('result', data);
+
+    updateLastPage(target, data.focused);
 }
 
 app.engine('hbs', exphbs({
@@ -259,52 +287,6 @@ app.listen(4200, function () {
     console.log('notJif listening on port localhost:4200!');
 });
 
-const renderHome = function (res) {
-    updateCurPage(home, null);
-
-    highlight = Math.floor(Math.random() * highlights);
-
-    res.render('home', {
-        catList: categories,
-        highlight: highlight,
-        randDance: getRand(dances),
-        randPhrase: getRand(phrases),
-        navAnimState: getAnimState('nav'),
-        homeAnimState: getAnimState('home')
-    });
-    updateLastPage(home, null);
-}
-
-const renderSearch = function (input, page, focusID, navi, nextPageGifs, res) {
-    giphy.search({
-        q: input,
-        limit: maxGifs,
-        offset: page * maxGifs
-    }, (error, response) => {
-        var gifs = response.data;
-        var focused = focusID ? getFocused(gifs, focusID) : null;
-
-        updateCurPage(search, focused);
-        res.render('result', {
-            gifs: gifs,
-            nextPageGifs: nextPageGifs,
-            favIDs: favIDs,
-            focused: focused,
-            curPage: page,
-            navigation: navi,
-            catList: categories,
-            highlight: highlight,
-            navAnimState: getAnimState('nav'),
-            focusAnimState: getAnimState('focus')
-        });
-        updateLastPage(search, focused);
-
-        if (error !== null) {
-            console.error(error);
-        }
-    });
-}
-
 app.get('/', function (req, res) {
     renderHome(res);
 });
@@ -313,30 +295,27 @@ app.get('/favorites', function (req, res) {
     updateFavs().then(() => {
         var page = req.query.page ? req.query.page : 0;
         var focusID = req.query.focus ? req.query.focus : null;
-        var focused = focusID ? getFocused(favorites, focusID) : null;
 
-        var navi = canGo(page, true);
+        var gifs = serveFavs(page);
 
-        var nextPageGifs = [];
-
-        if (navi.forward) {
-            nextPageGifs = serveFavs(parseInt(page) + 1);
-        }
-
-        updateCurPage(favs, focused);
-        res.render('result', {
-            gifs: serveFavs(page),
-            nextPageGifs: nextPageGifs,
+        var data = {
+            gifs: gifs,
+            nextPageGifs: [],
             favIDs: favIDs,
-            focused: focused,
+            focused: focusID ? getFocused(gifs, focusID) : null,
             curPage: page,
-            navigation: canGo(page, true),
+            navigation: canGo(page),
             catList: categories,
             highlight: highlight,
-            navAnimState: getAnimState('nav'),
-            focusAnimState: getAnimState('focus')
-        });
-        updateLastPage(favs, focused);
+            navAnimState: null,
+            focusAnimState: null
+        };
+
+        if (data.navigation.forward) {
+            data.nextPageGifs = serveFavs(parseInt(page) + 1);
+        }
+
+        renderResults(favs, res, data);
     }).catch((error) => {
         console.error(error);
     });
@@ -348,28 +327,48 @@ app.get('/search', function (req, res) {
         var page = req.query.page ? req.query.page : 0;
         var focusID = req.query.focus ? req.query.focus : null;
 
-        var navi = canGo(page);
+        var data = {
+            gifs: null,
+            nextPageGifs: [],
+            favIDs: favIDs,
+            focused: null,
+            curPage: page,
+            navigation: null,
+            catList: categories,
+            highlight: highlight,
+            navAnimState: null,
+            focusAnimState: null
+        };
 
-        var nextPageGifs = [];
 
         if (input !== null) {
-            if (navi.forward) {
-                giphy.search({
-                    q: input,
-                    limit: maxGifs,
-                    offset: (parseInt(page) + 1) * maxGifs
-                }, (error, response) => {
-                    nextPageGifs = response.data;
-                    
-                    if (error !== null) {
-                        console.error(error);
-                    }
+            giphy.search({
+                q: input,
+                limit: maxGifs,
+                offset: page * maxGifs
+            }, (error, response) => {
+                data.gifs = response.data;
+                data.focused = focusID ? getFocused(favorites, focusID) : null;
+                data.navigation = canGo(page, response.pagination);
 
-                    renderSearch(input, page, focusID, navi, nextPageGifs, res);
-                });
-            } else {
-                renderSearch(input, page, focusID, navi, nextPageGifs, res);
-            }
+                if (error !== null) {
+                    console.error(error);
+                }
+
+                if (data.navigation.forward) {
+                    giphy.search({
+                        q: input,
+                        limit: maxGifs,
+                        offset: (parseInt(page) + 1) * maxGifs
+                    }, (error, response) => {
+                        data.nextPageGifs = response.data;
+
+                        renderResults(search, res, data)
+                    });
+                } else {
+                    renderResults(search, res, data);
+                }
+            });
         } else {
             renderHome(res);
         }
