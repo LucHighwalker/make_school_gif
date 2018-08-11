@@ -323,7 +323,7 @@ a:hover {
 }
 
 .container {
-    padding: 110px 0;
+    padding: 110px 100px;
 }
 
 .animate {
@@ -332,4 +332,10 @@ a:hover {
     -o-transition: all .3s ease-in-out;
     -ms-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out
+}
+
+@media(max-width:992px) {
+    .container {
+        padding: 110px 10%;
+    }
 }

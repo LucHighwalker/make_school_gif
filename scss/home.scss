@@ -42,3 +42,15 @@
     -webkit-animation: bounceInDown 1s ease-in;
     animation: bounceInDown 1s ease-in;
 }
+
+@media(max-width:992px) {
+    .home-box {
+        padding-top: 75px;
+        h1 {
+            font-size: 50px;
+        }
+        .dance {
+            height: 300px;
+        }
+    }
+}

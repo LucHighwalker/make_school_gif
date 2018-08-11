@@ -342,3 +342,15 @@
         left: 0;
     }
 }
+
+@media(max-width:992px) {
+    .gif-result {
+        transform: scale(1.5, 1.5);
+        margin: 70px;
+    }
+    .gif-result:hover {
+        top: 180px;
+        bottom: 95px;
+        margin: 20px;
+    }
+}

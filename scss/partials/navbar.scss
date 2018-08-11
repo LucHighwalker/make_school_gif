@@ -102,6 +102,25 @@ nav {
         -moz-border-radius: 6px 0 6px 6px;
         border-radius: 6px 0 6px 6px;
     }
+    .nav-search {
+        width: 600px;
+        margin-left: calc(100% - 700px);
+        transform: scale(1, 1);
+    }
+    .nav-search.show {
+        -moz-animation: bounceInRight 1s ease-in;
+        -webkit-animation: bounceInRight 1s ease-in;
+        animation: bounceInRight 1s ease-in;
+    }
+    .nav-search.hide {
+        -moz-animation: bounceOutRight 1s ease;
+        -webkit-animation: bounceOutRight 1s ease;
+        animation: bounceOutRight 1s ease;
+        transform: scale(0, 0);
+    }
+    .nav-search.hidden {
+        display: none;
+    }
 }
 
 @media(min-width:992px) {
@@ -129,33 +148,44 @@ nav {
         overflow-x: hidden;
         padding-bottom: 40px
     }
-    .nav-search {
-        width: 600px;
-        margin-left: calc(100% - 700px);
-        transform: scale(1, 1);
-    }
-    .nav-search.show {
-        -moz-animation: bounceInRight 1s ease-in;
-        -webkit-animation: bounceInRight 1s ease-in;
-        animation: bounceInRight 1s ease-in;
-    }
-    .nav-search.hide {
-        -moz-animation: bounceOutRight 1s ease;
-        -webkit-animation: bounceOutRight 1s ease;
-        animation: bounceOutRight 1s ease;
-        transform: scale(0, 0);
-    }
-    .nav-search.hidden {
-        display: none;
-    }
 }
 
 @media(max-width:992px) {
+    nav {
+        .navbar-brand {
+            .highlight-bg {
+                height: 64px;
+                width: 240px;
+            }
+            .white-bg {
+                height: 64px;
+                width: 240px;
+            }
+            img {
+                height: 74px;
+                width: 250px;
+            }
+        }
+    }
+    .nav-search {
+        position: fixed;
+        z-index: 20;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
     .header-top {
         box-shadow: none;
     }
-    .navbar-toggler-icon {
-        font-size: xx-large;
+    .navbar-toggler {
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin: 15px;
+        .navbar-toggler-icon {
+            font-size: xx-large;
+        }
     }
     .navbar-expand-lg {
         font-size: xx-large;
