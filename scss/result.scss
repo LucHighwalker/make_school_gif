@@ -151,7 +151,8 @@
         z-index: 20;
         padding: 50px;
         opacity: 1;
-        border: 3px solid $light-grey;
+        margin: -30px;
+        border: 10px solid $light-grey;
         transform: scale(1.1, 1.1);
         img {
             position: absolute;
@@ -262,7 +263,7 @@
     top: 65px;
     bottom: 15px;
     z-index: 10;
-    margin: -45px;
+    margin: -75px;
     padding: 60px;
     box-shadow: 8px 8px 20px $dark-grey;
     .gif-image {
@@ -270,7 +271,8 @@
     }
     .gif-image.static {
         opacity: 0;
-        transform: scale(2.1, 2.1);
+        margin: 0;
+        transform: scale(2.3, 2.3);
     }
     .gif-hover {
         opacity: 1;
@@ -345,12 +347,13 @@
 
 @media(max-width:992px) {
     .gif-result {
+        max-width: 90%;
         transform: scale(1.5, 1.5);
-        margin: 70px;
+        margin: 50px;
     }
     .gif-result:hover {
         top: 180px;
         bottom: 95px;
-        margin: 20px;
+        margin: -30px;
     }
 }
