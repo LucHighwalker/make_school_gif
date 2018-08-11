@@ -1,2 +1,4 @@
 /node_modules
 environment.json
+.DS_Store
+public/.DS_Store
