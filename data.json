@@ -7,7 +7,21 @@
                 "cat",
                 "dog",
                 "bird",
-                "horse"
+                "horse",
+                {
+                    "name": "hi",
+                    "array": [
+                        "how do you do",
+                        "im fime",
+                        {
+                            "name": "Really?",
+                            "array": [
+                                "cause you spelled that wrong"
+                            ]
+                        }
+                        
+                    ]
+                }
             ]
         }
     ],
