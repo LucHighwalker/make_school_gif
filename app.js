@@ -4,7 +4,7 @@ const app = express();
 const exphbs = require('express-handlebars');
 const giphy = require('giphy-api')();
 
-const maxGifs = 25;
+const maxGifs = 5;
 const highlights = 14;
 
 const home = 'home';
@@ -88,11 +88,13 @@ const serveFavs = function (page) {
 const getFocused = function (gifs, focused) {
     var focusedGif = null;
     for (var i = 0; i < gifs.length; i++) {
+        console.log(gifs[i].id);
         if (focused === gifs[i].id) {
             focusedGif = gifs[i];
             break;
         }
     }
+    console.log(focusedGif);
     return focusedGif;
 }
 
@@ -348,7 +350,7 @@ app.get('/search', function (req, res) {
                 offset: page * maxGifs
             }, (error, response) => {
                 data.gifs = response.data;
-                data.focused = focusID ? getFocused(favorites, focusID) : null;
+                data.focused = focusID ? getFocused(data.gifs, focusID) : null;
                 data.navigation = canGo(page, response.pagination);
 
                 if (error !== null) {
