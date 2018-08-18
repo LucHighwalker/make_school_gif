@@ -4,7 +4,7 @@ const app = express();
 const exphbs = require('express-handlebars');
 const giphy = require('giphy-api')();
 
-const maxGifs = 5;
+const maxGifs = 25;
 const highlights = 14;
 
 const home = 'home';

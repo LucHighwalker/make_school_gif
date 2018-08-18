@@ -88,12 +88,9 @@ nav {
         border-style: solid;
         border-width: 5px 0 5px 5px;
         border-left-color: #ccc;
-        margin-top: 5px;
+        margin-top: 10px;
         margin-right: 5px;
         background-color: $light-grey;
-    }
-    .dropdown-submenu:hover>a:after {
-        border-left-color: #fff;
     }
     .dropdown-submenu.pull-left {
         float: none;
