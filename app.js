@@ -88,13 +88,11 @@ const serveFavs = function (page) {
 const getFocused = function (gifs, focused) {
     var focusedGif = null;
     for (var i = 0; i < gifs.length; i++) {
-        console.log(gifs[i].id);
         if (focused === gifs[i].id) {
             focusedGif = gifs[i];
             break;
         }
     }
-    console.log(focusedGif);
     return focusedGif;
 }
 
