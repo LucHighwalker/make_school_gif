@@ -20,7 +20,8 @@
     -moz-animation: fadeOutQuart 0.3s ease-in;
     -webkit-animation: fadeOutQuart 0.3s ease-in;
     animation: fadeOutQuart 0.3s ease-in;
-    transform: scale(0, 0);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .focus-off-click.hidden {
@@ -126,7 +127,8 @@
     -moz-animation: fadeOut 1s ease-in;
     -webkit-animation: fadeOut 1s ease-in;
     animation: fadeOut 1s ease-in;
-    transform: scale(0, 0);
+    opacity: 0;
+    pointer-events: none;
 }
 
 .focused.hidden {

@@ -47,6 +47,7 @@ var lastPage = {
 
 var highlight = 0;
 
+var lastFocused = null;
 var favorites = [];
 var favIDs = [];
 
@@ -123,7 +124,8 @@ const updateCurPage = function (page, focused) {
 
 const updateLastPage = function (page, focused) {
     lastPage.page = page;
-    lastPage.focused = focused !== null ? true : false;
+    lastPage.focused = focused ? true : false;
+    lastFocused = focused;
 }
 
 const getAnimState = function (key) {
@@ -303,6 +305,7 @@ app.get('/favorites', function (req, res) {
             nextPageGifs: [],
             favIDs: favIDs,
             focused: focusID ? getFocused(gifs, focusID) : null,
+            lastFocused: lastFocused,
             curPage: page,
             navigation: canGo(page),
             catList: categories,
@@ -332,6 +335,7 @@ app.get('/search', function (req, res) {
             nextPageGifs: [],
             favIDs: favIDs,
             focused: null,
+            lastFocused: lastFocused,
             curPage: page,
             navigation: null,
             catList: categories,

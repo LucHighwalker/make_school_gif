@@ -1,8 +1,11 @@
-{{#if focused}}
 <button class="focus-off-click {{focusAnimState}}" onclick="unfocusGif('{{focused.id}}')"></button>
 <div class="focused {{focusAnimState}} col-md-10 col-lg-9 col-xl-8">
   <h1 class="focused-title hl{{highlight}} clr">{{stringify focused.title}}</h1>
+  {{#if focused}}
   <img class="focused-image image-load lg animate" src="{{focused.images.original.url}}">
+  {{else}}
+  <img class="focused-image image-load lg animate" src="{{lastFocused.images.original.url}}">
+  {{/if}}
   <ul class="focused-info">
     <li>rating: {{stringify focused.rating}}</li>
     {{#if focused.source_tld}}
@@ -28,4 +31,3 @@
 </div>
 
 <script src="scripts/partials/focused.js"></script> 
-{{/if}}
