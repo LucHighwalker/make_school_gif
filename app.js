@@ -184,7 +184,8 @@ const renderHome = function (res) {
         randDance: getRand(dances),
         randPhrase: getRand(phrases),
         navAnimState: getAnimState('nav'),
-        homeAnimState: getAnimState('home')
+        homeAnimState: getAnimState('home'),
+        focusAnimState: 'hidden'
     });
     updateLastPage(home, null);
 }
@@ -206,7 +207,7 @@ app.engine('hbs', exphbs({
     partialsDir: __dirname + '/views/partials',
     helpers: {
         json: function (obj) {
-            return JSON.stringify(obj).replace(/"/g, "'");
+            return obj ? JSON.stringify(obj).replace(/"/g, "'") : 'no object';
         },
         getConfig: function (key) {
             switch (key) {
